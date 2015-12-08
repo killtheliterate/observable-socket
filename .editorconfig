@@ -1,0 +1,23 @@
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[*.md]
+trim_trailing_whitespace = false
+
+[*.js]
+indent_size = 4
+indent_style = space
+quote_type = single
+space_after_anonymous_functions = true
+space_after_control_statements = true
+spaces_around_operators = true
+spaces_in_brackets = hybrid
+
+[{.travis.yml,package.json}]
+indent_size = 2
+indent_style = space
