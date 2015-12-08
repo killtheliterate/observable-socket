@@ -13,15 +13,15 @@ export default function observeableSocket (address) {
         .flatMap(() => fromEvent(ws, 'message'))
         .takeUntil(closeStream)
 
-    const publisher = new Promise(function(resolve) {
+    const address = new Promise(function(resolve) {
         openStream.subscribe(() =>
             resolve(message => _ws.send(JSON.stringify(message)))
         )
     })
 
     return {
-        address: function(message) {
-            publisher.then(send => send(message))
+        send: function(message) {
+            address.then(proxy => proxy(message))
         },
 
         signal: parseStream,
