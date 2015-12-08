@@ -17,17 +17,17 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var fromEvent = _rx2.default.Observable.fromEvent;
 
-function observeableSocket(address) {
-    var _ws = new _ws3.default(address);
+function observeableSocket(socketAddress) {
+    var _ws = new _ws3.default(socketAddress);
 
     var openStream = fromEvent(_ws, 'open');
     var closeStream = fromEvent(_ws, 'close');
 
     var messageStream = openStream.flatMap(function () {
-        return fromEvent(ws, 'message');
+        return fromEvent(_ws, 'message');
     }).takeUntil(closeStream);
 
-    var publisher = new Promise(function (resolve) {
+    var address = new Promise(function (resolve) {
         openStream.subscribe(function () {
             return resolve(function (message) {
                 return _ws.send(JSON.stringify(message));
@@ -36,12 +36,12 @@ function observeableSocket(address) {
     });
 
     return {
-        address: function address(message) {
-            publisher.then(function (send) {
-                return send(message);
+        send: function send(message) {
+            address.then(function (proxy) {
+                return proxy(message);
             });
         },
 
-        signal: parseStream
+        signal: messageStream
     };
 }
