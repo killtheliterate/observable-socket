@@ -1,8 +1,4 @@
-#!/usr/bin/env node
+require('babel-core/register')({presets: ['es2015']})
 
-var createConnection = require('../dist/connection').default
-var connection = createConnection('wss://stchat.victorops.com/chat')
-
-connection.signal.subscribe(function(message) {
-    console.log(message)
-})
+// require('./spec/send.test')
+require('./spec/signal.test')
