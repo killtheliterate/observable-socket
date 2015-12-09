@@ -1,19 +1,14 @@
-import http from 'http'
-import SocketIO from 'socket.io'
+import {Server} from 'ws'
 
-export default function() {
-    const io = SocketIO(http.createServer())
+export default function createServer () {
+    var server = new Server({port: 8080})
 
-    io.on('connection', socket => {
+    server.on('connection', function(socket) {
+        socket.send('Socket opened')
 
-      socket.emit('pong', 'hello')
-
-      setTimeout(() => socket.emit('pong', 'bye'), 1000)
-
-      socket.on('ping', message => {
-        socket.emit('pong', message)
-      })
+        // echo
+        socket.on('message', msg => socket.send('Echo: ' + msg))
     })
 
-    io.listen('3005')
+    return server
 }

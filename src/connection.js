@@ -29,7 +29,7 @@ export default function observeableSocket (socketAddress) {
 
         return function () {
             closeSub.dispose()
-            errorSubdispose()
+            errorSub.dispose()
             messageSub.dispose()
 
             _vent.emit('dispose') // destroy send stream

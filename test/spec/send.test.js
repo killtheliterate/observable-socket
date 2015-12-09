@@ -1,12 +1,8 @@
 import {expect} from 'chai'
 
-// connection.signal.subscribe(function (message) {
-//     console.log(message)
-// })
+describe('connection', function () {
 
-describe('connection.signal', function () {
-
-  it('#subscribe', function () {
+  it('#send', function () {
       expect(true).to.equal(true)
   })
 })
