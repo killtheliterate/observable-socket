@@ -1,12 +1,10 @@
-import WebSocket from 'ws'
 import Rx from 'rx'
 import {EventEmitter} from 'events'
 
 const fromEvent = Rx.Observable.fromEvent
 
-export default function observeableSocket (socketAddress) {
+export default function observableSocket (_ws) {
     const _vent = new EventEmitter()
-    const _ws = new WebSocket(socketAddress)
 
     const _openStream = fromEvent(_ws, 'open')
 
@@ -23,14 +21,16 @@ export default function observeableSocket (socketAddress) {
     const socketStream = Rx.Observable.create(function(observer) {
         const _messageStream = _openStream.flatMap(() => fromEvent(_ws, 'message'))
 
-        const closeSub = fromEvent(_ws,'close').subscribe(e => observer.onCompleted(e))
-        const errorSub = fromEvent(_ws, 'error').subscribe(e => observer.onError(e))
-        const messageSub = _messageStream.subscribe(e => observer.onNext(e))
+        const closeDisposable = fromEvent(_ws,'close').subscribe(e => observer.onCompleted(e))
+        const errorDisposable = fromEvent(_ws, 'error').subscribe(e => observer.onError(e))
+        const messageDisposable = _messageStream.subscribe(e => observer.onNext(e))
 
         return function () {
-            closeSub.dispose()
-            errorSub.dispose()
-            messageSub.dispose()
+            closeDisposable.dispose()
+            errorDisposable.dispose()
+            messageDisposable.dispose()
+
+            _ws.close() // dispose of the websocket
 
             _vent.emit('dispose') // destroy send stream
         }
@@ -41,6 +41,6 @@ export default function observeableSocket (socketAddress) {
             address.then(proxy => proxy(message))
         },
 
-        signal: socketStream,
+        observable: socketStream,
     }
 }

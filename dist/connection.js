@@ -3,11 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.default = observeableSocket;
-
-var _ws2 = require('ws');
-
-var _ws3 = _interopRequireDefault(_ws2);
+exports.default = observableSocket;
 
 var _rx = require('rx');
 
@@ -19,9 +15,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var fromEvent = _rx2.default.Observable.fromEvent;
 
-function observeableSocket(socketAddress) {
+function observableSocket(_ws) {
     var _vent = new _events.EventEmitter();
-    var _ws = new _ws3.default(socketAddress);
 
     var _openStream = fromEvent(_ws, 'open');
 
@@ -44,20 +39,22 @@ function observeableSocket(socketAddress) {
             return fromEvent(_ws, 'message');
         });
 
-        var closeSub = fromEvent(_ws, 'close').subscribe(function (e) {
+        var closeDisposable = fromEvent(_ws, 'close').subscribe(function (e) {
             return observer.onCompleted(e);
         });
-        var errorSub = fromEvent(_ws, 'error').subscribe(function (e) {
+        var errorDisposable = fromEvent(_ws, 'error').subscribe(function (e) {
             return observer.onError(e);
         });
-        var messageSub = _messageStream.subscribe(function (e) {
+        var messageDisposable = _messageStream.subscribe(function (e) {
             return observer.onNext(e);
         });
 
         return function () {
-            closeSub.dispose();
-            errorSubdispose();
-            messageSub.dispose();
+            closeDisposable.dispose();
+            errorDisposable.dispose();
+            messageDisposable.dispose();
+
+            _ws.close(); // dispose of the websocket
 
             _vent.emit('dispose'); // destroy send stream
         };
@@ -70,6 +67,6 @@ function observeableSocket(socketAddress) {
             });
         },
 
-        signal: socketStream
+        observable: socketStream
     };
 }

@@ -19,7 +19,7 @@ import ObservableSocket from 'observable-socket'
  * Create an echo socket by connecting to the echo socket provided by
  * websocket.org.
  */
-const echoSocket = ObservableSocket('wss://echo.websocket.org')
+const echoSocket = ObservableSocket(new WebSocket('wss://echo.websocket.org'))
 
 /**
  * We can send messages before we subscribe. Messages will be queued until you
@@ -28,10 +28,10 @@ const echoSocket = ObservableSocket('wss://echo.websocket.org')
 echoSocket.send('hi!')
 
 /**
- * Subscribing to the `echoSocket.signal` connects to the socket and sends queued
+ * Subscribing to the `echoSocket.observable` connects to the socket and sends queued
  * messages.
  */
-echoSocket.signal.subscribe(
+echoSocket.observable.subscribe(
 
   function onNext (data) {
     console.log(data)
@@ -56,7 +56,7 @@ of the shape:
 ```
 {
   send: <Function>,
-  signal: <Observable>
+  observable: <Observable>
 }
 ```
 
@@ -67,12 +67,12 @@ Here's how to get a socket that connects to websocket.org's echo websocketi:
 ```js
 import ObservableSocket from 'observable-socket'
 
-const socket = ObservableSocket('wss://echo.websocket.org')
+const socket = ObservableSocket(new WebSocket('wss://echo.websocket.org'))
 ```
 
 ## socket.signal
 
-The signal is an [RxJS](https://github.com/Reactive-Extensions/RxJS) observable
+The observable is an [RxJS](https://github.com/Reactive-Extensions/RxJS) observable
 that represents incoming messages from the socket.
 
 ## socket.send
