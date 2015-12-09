@@ -1,46 +1,49 @@
+import Websocket from 'ws'
+import _ from 'lodash'
 import {expect} from 'chai'
-import createServer from '../server'
-import createConnection from '../../dist/index'
 
+import createConnection from '../../src/index'
+import createServer from '../server'
 
 describe('connection.signal', function () {
 
     describe('#subscribe', function () {
-        let server, connection
+        let publisher, consumer, stream
 
         beforeEach(function(done) {
-            server = createServer()
-            connection = createConnection('ws://localhost:8080')
+            publisher = createServer('8080')
+            consumer = new Websocket('ws://localhost:8080')
+
+            stream = createConnection(consumer)
 
             done()
         })
 
         afterEach(function(done) {
-            server.close()
-            connection = null
+            publisher.close()
+            stream = null
 
             done()
         })
 
-        it ('connects to the socket', function(done) {
-            connection.signal.subscribe(function (message) {
+        it('connects to the socket', function(done) {
+            stream.observable.subscribe(function (message) {
                 expect(message).to.equal('Socket opened')
                 done()
             })
         })
 
-        it ('hears subsequent messages', function(done) {
-            const ob = connection.signal.concatAll()
+        it('hears subsequent messages', function(done) {
+            stream.send('yup')
+            stream.send('yup')
 
-            connection.send('one')
-            connection.send('two')
-            connection.send('three')
+            const messages = stream.observable.take(3).toArray()
 
-            // server.close()
+            messages.subscribe(function(message) {
+                const expected = ['Socket opened', 'Echo: "yup"', 'Echo: "yup"']
 
-            ob.subscribe(function (message) {
-                console.log(message)
-                expect(message).to.equal('Socket opened')
+                expect(_.isEqual(message, expected)).to.equal(true)
+
                 done()
             })
         })

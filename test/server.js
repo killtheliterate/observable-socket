@@ -1,7 +1,7 @@
 import {Server} from 'ws'
 
-export default function createServer () {
-    var server = new Server({port: 8080})
+export default function createServer (port) {
+    var server = new Server({port: port})
 
     server.on('connection', function(socket) {
         socket.send('Socket opened')
