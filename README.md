@@ -77,6 +77,6 @@ that represents incoming messages from the socket.
 
 ## socket.send
 
-`send` is a function to push messages into the socket. This will create a queue
-of messages to be sent until you subscribe to the signal. After you are subscribed
-sent messages will execute ASAP.
+`send` is a function to push messages into the socket. This will create
+a queue of messages that will not be sent until you subscribe to the
+observable. After you are subscribed sent messages will execute ASAP.

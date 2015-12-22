@@ -2,7 +2,7 @@ import Websocket from 'ws'
 import _ from 'lodash'
 import {expect} from 'chai'
 
-import createConnection from '../../src/index'
+import createConnection from '../../dist/index'
 import createServer from '../server'
 
 describe('connection.signal', function () {
