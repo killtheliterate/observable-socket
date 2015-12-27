@@ -1,6 +1,8 @@
 # observable-socket
 
-An observable socket, no duh.
+An observable socket, no duh. Works with
+[ws](https://github.com/websockets/ws) and
+[window.WebSocket](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket).
 
 # Usage
 
@@ -23,7 +25,7 @@ const echoSocket = ObservableSocket(new WebSocket('wss://echo.websocket.org'))
 
 /**
  * We can send messages before we subscribe. Messages will be queued until you
- * subscribe to the `echoSocket.signal` then they will be sent in order.
+ * subscribe to the `echoSocket.observable` then they will be sent in order.
  */
 echoSocket.send('hi!')
 
@@ -70,7 +72,7 @@ import ObservableSocket from 'observable-socket'
 const socket = ObservableSocket(new WebSocket('wss://echo.websocket.org'))
 ```
 
-## socket.signal
+## socket.observable
 
 The observable is an [RxJS](https://github.com/Reactive-Extensions/RxJS) observable
 that represents incoming messages from the socket.
