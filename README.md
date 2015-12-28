@@ -4,6 +4,14 @@ An observable socket, no duh. Works with
 [ws](https://github.com/websockets/ws) and
 [window.WebSocket](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket).
 
+Observable-socket assumes a few things:
+* Promises are available. If you're targeting an environment that does not
+  support native Promises, use
+  [babel-polyfill](https://babeljs.io/docs/usage/polyfill/) or something
+  similar.
+* You'll be using something like [Browserify](http://browserify.org/) or
+  [webpack](https://webpack.github.io/) if working with window.WebSocket.
+
 # Usage
 
 install it.
