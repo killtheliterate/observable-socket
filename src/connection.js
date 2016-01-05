@@ -65,7 +65,7 @@ export default function observableSocket (_ws) {
             })
 
         const errorDisposable = Observable.fromEvent(ws, 'error')
-            .subscribe(function onNext(e) {
+            .subscribe(function onNext (e) {
                 log('error', e)
 
                 observer.onError(e)

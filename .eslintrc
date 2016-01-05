@@ -1,4 +1,7 @@
 rules:
+  space-before-function-paren:
+    - 2
+    - always
   indent:
     - 2
     - 4
