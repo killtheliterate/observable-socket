@@ -9,7 +9,7 @@
     "pretest": "rm -rf ./dist && babel src --out-dir dist",
     "test:node": "npm run pretest; ./node_modules/.bin/mocha test/node",
     "test:browser": "npm run pretest; ./node_modules/.bin/karma start karma.conf.js",
-    "test": "./node_modules/.bin/mocha test/node; ./node_modules/.bin/karma start karma.conf.js"
+    "test": "./node_modules/.bin/mocha test/node; ./node_modules/.bin/karma start karma.conf.js --browsers Firefox --single-run --log-level error"
   },
   "keywords": [
     "socket",
@@ -44,6 +44,7 @@
     "karma-browserify": "^4.4.2",
     "karma-chai": "^0.1.0",
     "karma-chrome-launcher": "^0.2.2",
+    "karma-firefox-launcher": "^0.1.7",
     "karma-mocha": "^0.2.1",
     "karma-spec-reporter": "0.0.23",
     "mocha": "^2.3.4",
