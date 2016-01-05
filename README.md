@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/killtheliterate/observable-socket.svg?branch=master)](https://travis-ci.org/killtheliterate/observable-socket)
+[![NPM version](https://img.shields.io/npm/v/observable-socket.svg)](https://www.npmjs.com/package/observable-socket)
+
 # observable-socket
 
 An observable socket, no duh. Works with
