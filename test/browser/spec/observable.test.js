@@ -7,9 +7,9 @@ describe('socket.observable', function () {
 
     describe('subscribe', function () {
 
-        describe('onNext', function() {
+        describe('onNext', function () {
 
-            beforeEach('connect', function(done) {
+            beforeEach('connect', function (done) {
                 this.consumer = new WebSocket('ws://echo.websocket.org')
 
                 this.stream = createConnection(this.consumer)
@@ -21,13 +21,13 @@ describe('socket.observable', function () {
                 done()
             })
 
-            afterEach('disconnect', function(done) {
+            afterEach('disconnect', function (done) {
                 this.stream = null
 
                 done()
             })
 
-            it('receives a message', function(done) {
+            it('receives a message', function (done) {
                 var sub = this.stream.observable.take(1)
 
                 sub.subscribe(function (el) {
@@ -37,11 +37,11 @@ describe('socket.observable', function () {
                 })
             })
 
-            it('receives a stream of messages', function(done) {
+            it('receives a stream of messages', function (done) {
                 var sub = this.stream.observable
                     .take(3).toArray()
 
-                sub.subscribe(function(message) {
+                sub.subscribe(function (message) {
                     var expected = ['OPEN', '1', '2']
 
                     expect(_.isEqual(message, expected)).to.equal(true)
@@ -51,8 +51,8 @@ describe('socket.observable', function () {
             })
         })
 
-        describe('onError', function() {
-            xit('forwards socket errors to onError', function(done) {
+        describe('onError', function () {
+            xit('forwards socket errors to onError', function (done) {
                 var consumer = new WebSocket('ws://echo.websocket.org')
                 var stream = createConnection(consumer)
 
@@ -61,7 +61,7 @@ describe('socket.observable', function () {
                     },
 
                     function onError (err) {
-                        done()
+                        done(err)
                     },
 
                     function onCompleted () {
@@ -71,9 +71,9 @@ describe('socket.observable', function () {
 
         })
 
-        describe('onCompleted', function() {
+        describe('onCompleted', function () {
 
-            xit('forwards socket close to onCompleted', function(done) {
+            it('forwards socket close to onCompleted', function (done) {
                 var consumer = new WebSocket('ws://echo.websocket.org')
                 var stream = createConnection(consumer)
 
@@ -89,7 +89,7 @@ describe('socket.observable', function () {
                     }
                 )
 
-                setTimeout(() => consumer.send('die'), 1000)
+                setTimeout(() => consumer.close(), 1000)
             })
 
         })

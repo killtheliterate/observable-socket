@@ -26,7 +26,7 @@ export default function observableSocket (_ws) {
         ws = _ws
     }
 
-    const readyToSend = new Promise(function (resolve, reject) {
+    const readyToSend = new Promise(function (resolve) {
 
         // window.WebSocket gets weird when trying to proxy to it... so this
         // "browser" boolean madness seems to be necessary at the moment.
@@ -45,7 +45,7 @@ export default function observableSocket (_ws) {
 
             resolve(send)
         } else {
-            ws.once('open', function() {
+            ws.once('open', function () {
                 log('opened')
 
                 resolve(send)
