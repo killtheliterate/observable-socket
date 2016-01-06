@@ -3,9 +3,9 @@
 
 # observable-socket
 
-An observable socket, no duh. Works with
+An observable socket, no duh. Tested with
 [ws](https://github.com/websockets/ws) and
-[window.WebSocket](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket).
+[window.WebSocket](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket). 
 
 Observable-socket assumes a few things:
 * Promises are available. If you're targeting an environment that does not
@@ -35,14 +35,12 @@ import ObservableSocket from 'observable-socket'
 const echoSocket = ObservableSocket(new WebSocket('wss://echo.websocket.org'))
 
 /**
- * We can send messages before we subscribe. Messages will be queued until you
- * subscribe to the `echoSocket.observable` then they will be sent in order.
+ * We can send messages before we subscribe.
  */
 echoSocket.send('hi!')
 
 /**
- * Subscribing to the `echoSocket.observable` connects to the socket and sends queued
- * messages.
+ * Subscribing to the `echoSocket.observable` connects to the socket.
  */
 echoSocket.observable.subscribe(
 
@@ -75,7 +73,7 @@ of the shape:
 
 We will call that shape `socket`.
 
-Here's how to get a socket that connects to websocket.org's echo websocketi:
+Here's how to get a socket that connects to websocket.org's echo websocket:
 
 ```js
 import ObservableSocket from 'observable-socket'
@@ -91,5 +89,4 @@ that represents incoming messages from the socket.
 ## socket.send
 
 `send` is a function to push messages into the socket. This will create
-a queue of messages that will not be sent until you subscribe to the
-observable. After you are subscribed sent messages will execute ASAP.
+a queue of messages that will not be sent until the socket is connected.

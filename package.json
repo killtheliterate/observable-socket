@@ -10,9 +10,8 @@
     "prepublish": "rm -rf ./dist && babel src --out-dir dist",
     "pretest": "rm -rf ./dist && babel src --out-dir dist;",
     "test": "npm run lint:quiet && ./node_modules/.bin/mocha test/node && ./node_modules/.bin/karma start karma.conf.js --browsers Firefox --single-run --log-level error",
-    "test:browser": "npm run pretest && ./node_modules/.bin/karma start karma.conf.js",
-    "test:node": "npm run pretest && ./node_modules/.bin/mocha test/node",
-    "test:watch": "./node_modules/.bin/watch 'npm run test' src test"
+    "test:browser": "npm run pretest && ./node_modules/.bin/karma start karma.conf.js --single-run",
+    "test:node": "npm run pretest && ./node_modules/.bin/mocha test/node"
   },
   "keywords": [
     "socket",

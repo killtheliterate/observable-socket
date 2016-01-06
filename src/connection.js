@@ -6,37 +6,25 @@ import { has } from 'lodash'
 const log = debug('observable-socket')
 
 export default function observableSocket (_ws) {
-    let ws, browser = false // init
+    let ws // init
 
-    // @TODO: eat spaghetti
-    //
-    // This is obviously brittle. As written, this only works with
-    // window.WebSocket or ws. Both have different APIs for working with
-    // socket events. This is intended to normalize the relevant ones.
+    // Normalize events between browser and node. Assumes node libs follow the
+    // same pattern that "ws" does, i.e. socket.io *does not* work.
     if (has(global, 'WebSocket')) {
         ws = new EventEmitter()
-        browser = true
 
         _ws.onopen    = () => ws.emit('open')
         _ws.onclose   = () => ws.emit('close')
         _ws.onerror   = () => ws.emit('error')
-
         _ws.onmessage = e => ws.emit('message', e.data)
     } else {
         ws = _ws
     }
 
+    const ready = () => _ws.readyState === 1
+    const send = message => _ws.send(message)
+
     const readyToSend = new Promise(function (resolve) {
-
-        // window.WebSocket gets weird when trying to proxy to it... so this
-        // "browser" boolean madness seems to be necessary at the moment.
-        const ready = () => browser
-            ? _ws.readyState === 1
-            : ws.readyState === 1
-
-        const send = message => browser
-            ? _ws.send(message)
-            : ws.send(message)
 
         // If we make an Observable from an already connected socket, we'll
         // never hear anything about 'open'.
