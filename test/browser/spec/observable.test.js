@@ -89,7 +89,9 @@ describe('socket.observable', function () {
                     }
                 )
 
-                setTimeout(() => consumer.close(), 1000)
+                setTimeout(function () {
+                    consumer.close()
+                }, 1000)
             })
 
         })

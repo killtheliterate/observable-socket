@@ -1,7 +1,7 @@
-import { Observable } from 'rx'
-import { EventEmitter } from 'events'
-import { isFunction } from 'lodash'
 import debug from 'debug'
+import { EventEmitter } from 'events'
+import { Observable } from 'rx'
+import { has } from 'lodash'
 
 const log = debug('observable-socket')
 
@@ -13,7 +13,7 @@ export default function observableSocket (_ws) {
     // This is obviously brittle. As written, this only works with
     // window.WebSocket or ws. Both have different APIs for working with
     // socket events. This is intended to normalize the relevant ones.
-    if (isFunction(global.WebSocket)) {
+    if (has(global, 'WebSocket')) {
         ws = new EventEmitter()
         browser = true
 
