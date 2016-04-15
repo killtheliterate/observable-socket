@@ -5,6 +5,9 @@ import { expect } from 'chai'
 import createConnection from '../../../dist/index'
 import { Publish, Err } from '../../server'
 
+// Observable operators
+import { take } from 'rxjs/operator/take'
+
 describe('socket.observable', function () {
 
     describe('subscribe', function () {
@@ -30,7 +33,7 @@ describe('socket.observable', function () {
             })
 
             it('receives a message', function (done) {
-                const sub = this.stream.observable.take(1)
+                const sub = take.call(this.stream.observable, 1)
 
                 sub.subscribe(function (message) {
                     expect(message).to.equal('OPEN')
@@ -40,8 +43,7 @@ describe('socket.observable', function () {
             })
 
             it('receives a stream of messages', function (done) {
-                const sub = this.stream.observable
-                    .take(3).toArray()
+                const sub = take.call(this.stream.observable, 3).toArray()
 
                 sub.subscribe(function (message) {
                     const expected = ['OPEN', '1', '2']

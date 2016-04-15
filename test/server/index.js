@@ -1,4 +1,9 @@
+// vendor
+// import debug from 'debug'
+
 import { Server } from 'ws'
+
+// const log = debug('observable-socket:test-server')
 
 export const Echo = function createEchoServer (port) {
     var server = new Server({port: port})
@@ -6,7 +11,13 @@ export const Echo = function createEchoServer (port) {
     server.on('connection', function (socket) {
 
         // echo
-        socket.on('message', msg => socket.send('Echo: ' + msg))
+        socket.on('message', function (msg) {
+            if (msg === 'die') {
+                server.close()
+            }
+
+            socket.send('Echo: ' + msg)
+        })
     })
 
     return server
@@ -20,7 +31,11 @@ export const Publish = function createPublishServer (port) {
 
         socket.send('OPEN')
 
-        var interval = setInterval(() => socket.send(JSON.stringify(counter++)), 100)
+        var interval = setInterval(function () {
+            if(socket.readyState === 1) {
+                socket.send(JSON.stringify(counter++))
+            }
+        }, 100)
 
         socket.on('message', function (msg) {
             if (msg === 'die') {

@@ -1,5 +1,6 @@
 var _ = require('lodash')
 var expect = require('chai').expect
+var take = require('rxjs/operator/take').take
 
 var createConnection = require('../../../dist/index')
 
@@ -8,15 +9,10 @@ describe('socket.observable', function () {
     describe('subscribe', function () {
 
         describe('onNext', function () {
-
             beforeEach('connect', function (done) {
-                this.consumer = new WebSocket('ws://echo.websocket.org')
+                this.consumer = new WebSocket('ws://localhost:8087')
 
                 this.stream = createConnection(this.consumer)
-
-                this.stream.send('OPEN')
-                this.stream.send('1')
-                this.stream.send('2')
 
                 done()
             })
@@ -28,7 +24,7 @@ describe('socket.observable', function () {
             })
 
             it('receives a message', function (done) {
-                var sub = this.stream.observable.take(1)
+                var sub = take.call(this.stream.observable, 1)
 
                 sub.subscribe(function (el) {
                     expect(el).to.equal('OPEN')
@@ -38,8 +34,7 @@ describe('socket.observable', function () {
             })
 
             it('receives a stream of messages', function (done) {
-                var sub = this.stream.observable
-                    .take(3).toArray()
+                var sub = take.call(this.stream.observable, 3).toArray()
 
                 sub.subscribe(function (message) {
                     var expected = ['OPEN', '1', '2']
@@ -51,9 +46,9 @@ describe('socket.observable', function () {
             })
         })
 
-        describe('onError', function () {
-            xit('forwards socket errors to onError', function (done) {
-                var consumer = new WebSocket('ws://echo.websocket.org')
+        describe.skip('onError', function () {
+            it('forwards socket errors to onError', function (done) {
+                var consumer = new WebSocket('ws://localhost:8088')
                 var stream = createConnection(consumer)
 
                 stream.observable.subscribe(
@@ -68,13 +63,11 @@ describe('socket.observable', function () {
                     }
                 )
             })
-
         })
 
         describe('onCompleted', function () {
-
             it('forwards socket close to onCompleted', function (done) {
-                var consumer = new WebSocket('ws://echo.websocket.org')
+                var consumer = new WebSocket('ws://localhost:8087')
                 var stream = createConnection(consumer)
 
                 stream.observable.subscribe(
@@ -93,7 +86,6 @@ describe('socket.observable', function () {
                     consumer.close()
                 }, 1000)
             })
-
         })
 
     })
