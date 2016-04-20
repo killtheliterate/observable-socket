@@ -7,7 +7,7 @@ import { Echo } from '../../server'
 // Observable operators
 import { take } from 'rxjs/operator/take'
 
-describe('socket.send', function () {
+describe('next', function () {
 
     describe('open socket', function () {
         it('sends immediately if socket is already open', function (done) {
@@ -19,9 +19,9 @@ describe('socket.send', function () {
             setTimeout(function () {
                 const stream = createConnection(socket)
 
-                stream.send('old socket')
+                stream.next('old socket')
 
-                var sub = take.call(stream.observable, 1)
+                var sub = take.call(stream, 1)
 
                 sub.subscribe(function (el) {
                     expect(el).to.equal('Echo: old socket')
@@ -39,9 +39,9 @@ describe('socket.send', function () {
             const publisher = Echo('8080')
             const stream = createConnection(new Websocket('ws://localhost:8080'))
 
-            stream.send('new socket')
+            stream.next('new socket')
 
-            var sub = take.call(stream.observable, 1)
+            var sub = take.call(stream, 1)
 
             sub.subscribe(function (el) {
                 expect(el).to.equal('Echo: new socket')
