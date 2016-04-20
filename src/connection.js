@@ -13,9 +13,10 @@ export default function observableSocket (_ws) {
     if (has(global, 'WebSocket')) {
         ws = new EventEmitter()
 
-        _ws.addEventListener('open', () => ws.emit('open'))
         _ws.addEventListener('close', () => ws.emit('close'))
         _ws.addEventListener('error', () => ws.emit('error'))
+        _ws.addEventListener('open',  () => ws.emit('open'))
+
         _ws.addEventListener('message', e => ws.emit('message', e.data))
     } else {
         ws = _ws
