@@ -4,6 +4,9 @@ import { expect } from 'chai'
 import createConnection from '../../../dist/index'
 import { Echo } from '../../server'
 
+// Observable operators
+import { take } from 'rxjs/operator/take'
+
 describe('socket.send', function () {
 
     describe('open socket', function () {
@@ -18,7 +21,7 @@ describe('socket.send', function () {
 
                 stream.send('old socket')
 
-                var sub = stream.observable.take(1)
+                var sub = take.call(stream.observable, 1)
 
                 sub.subscribe(function (el) {
                     expect(el).to.equal('Echo: old socket')
@@ -38,7 +41,7 @@ describe('socket.send', function () {
 
             stream.send('new socket')
 
-            var sub = stream.observable.take(1)
+            var sub = take.call(stream.observable, 1)
 
             sub.subscribe(function (el) {
                 expect(el).to.equal('Echo: new socket')

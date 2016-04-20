@@ -19,7 +19,7 @@ module.exports = function (config) {
             'dist/*.js': [ 'browserify' ],
             'test/browser/index.js': [ 'browserify' ],
         },
-        reporters: ['spec'],
+        reporters: ['progress'],
         singleRun: false,
     })
 }

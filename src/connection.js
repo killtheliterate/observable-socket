@@ -1,6 +1,6 @@
 import debug from 'debug'
 import { EventEmitter } from 'events'
-import { Observable } from 'rx'
+import { Observable } from 'rxjs/Rx'
 import { has } from 'lodash'
 
 const log = debug('observable-socket')
@@ -25,7 +25,7 @@ export default function observableSocket (_ws) {
     const ready = () => _ws.readyState === 1
     const send = message => _ws.send(message)
 
-    const readyToSend = new Promise(function (resolve) {
+    const readyToSend = new Promise(function readyToSend (resolve) {
 
         // If we make an Observable from an already connected socket, we'll
         // never hear anything about 'open'.
@@ -50,27 +50,27 @@ export default function observableSocket (_ws) {
             .subscribe(function onNext (e) {
                 debug('observable-socket:onNext')('message')
 
-                observer.onNext(e)
+                observer.next(e)
             })
 
         const errorDisposable = Observable.fromEvent(ws, 'error')
             .subscribe(function onNext (e) {
                 log('error', e)
 
-                observer.onError(e)
+                observer.error(e)
             })
 
         const closeDisposable = Observable.fromEvent(ws,'close')
             .subscribe(function onNext (e) {
                 log('closed')
 
-                observer.onCompleted(e)
+                observer.complete(e)
             })
 
-        return function disposeAndEmit () {
-            closeDisposable.dispose()
-            errorDisposable.dispose()
-            messageDisposable.dispose()
+        return function cleanup () {
+            closeDisposable.unsubscribe()
+            errorDisposable.unsubscribe()
+            messageDisposable.unsubscribe()
         }
     })
 
