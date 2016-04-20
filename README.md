@@ -44,15 +44,15 @@ echoSocket.send('hi!')
  */
 echoSocket.observable.subscribe(
 
-  function onNext (data) {
+  function next (data) {
     console.log(data)
   },
 
-  function onError (e) {
+  function error (e) {
     console.error('uh oh! ', e)
   },
 
-  function onComplete () {
+  function complete () {
     console.warn('Socket has closed')
   }
 
@@ -83,7 +83,7 @@ const socket = ObservableSocket(new WebSocket('wss://echo.websocket.org'))
 
 ## socket.observable
 
-The observable is an [RxJS](https://github.com/ReactiveX/rxjs) observable
+The observable is an [RxJS5](https://github.com/ReactiveX/rxjs) observable
 that represents incoming messages from the socket.
 
 ## socket.send
