@@ -2,8 +2,8 @@ import debug from 'debug'
 import { EventEmitter } from 'events'
 import {
     Observable,
-    Observer,
-    Subject
+    Subject,
+    Subscriber
 } from 'rxjs/Rx'
 
 import { has } from 'lodash'
@@ -50,22 +50,22 @@ export default function observableSocket (_ws) {
     // Compose socket event streams, so that external subscribers have
     // a single interface that forwards socket events to onNext, onError and
     // onCompleted.
-    const socketStream = Observable.create(function (observer) {
-        const messageDisposable = Observable.fromEvent(ws, 'message')
+    const webSocketObservable = Observable.create(function (observer) {
+        const messageSubscription = Observable.fromEvent(ws, 'message')
             .subscribe(function onNext (e) {
                 debug('observable-socket:onNext')('message')
 
                 observer.next(e)
             })
 
-        const errorDisposable = Observable.fromEvent(ws, 'error')
+        const errorSubscription = Observable.fromEvent(ws, 'error')
             .subscribe(function onNext (e) {
                 log('error', e)
 
                 observer.error(e)
             })
 
-        const closeDisposable = Observable.fromEvent(ws,'close')
+        const closeSubscription = Observable.fromEvent(ws,'close')
             .subscribe(function onNext (e) {
                 log('closed')
 
@@ -73,13 +73,13 @@ export default function observableSocket (_ws) {
             })
 
         return function cleanup () {
-            closeDisposable.unsubscribe()
-            errorDisposable.unsubscribe()
-            messageDisposable.unsubscribe()
+            closeSubscription.unsubscribe()
+            errorSubscription.unsubscribe()
+            messageSubscription.unsubscribe()
         }
     })
 
-    const observer = Observer.create(message => readyToSend.then(send => send(message)))
+    const sendToWebSocket = Subscriber.create(message => readyToSend.then(send => send(message)))
 
-    return new Subject(observer, socketStream)
+    return Subject.create(sendToWebSocket, webSocketObservable)
 }

@@ -23,7 +23,7 @@ describe('socket server', function () {
     })
 })
 
-describe('socket.send', function () {
+describe('socket.next', function () {
     describe('open socket', function () {
         it('sends immediately if socket is already open', function (done) {
             this.timeout(3000)
@@ -33,9 +33,9 @@ describe('socket.send', function () {
             setTimeout(function () {
                 const stream = createConnection(socket)
 
-                stream.send('old socket')
+                stream.next('old socket')
 
-                var sub = take.call(stream.observable, 1)
+                var sub = take.call(stream, 1)
 
                 sub.subscribe(function (el) {
                     expect(el).to.equal('Echo: old socket')
@@ -50,9 +50,9 @@ describe('socket.send', function () {
         it('waits to send until socket is open', function (done) {
             var stream = createConnection(new WebSocket('ws://localhost:8086'))
 
-            stream.send('new socket')
+            stream.next('new socket')
 
-            var sub = take.call(stream.observable, 1)
+            var sub = take.call(stream, 1)
 
             sub.subscribe(function (el) {
                 expect(el).to.equal('Echo: new socket')
