@@ -8,96 +8,93 @@ import { Publish, Err } from '../../server'
 // Observable operators
 import { take } from 'rxjs/operator/take'
 
-describe('socket.observable', function () {
+describe('socket.subscribe', function () {
 
-    describe('subscribe', function () {
+    describe('next', function () {
 
-        describe('onNext', function () {
+        beforeEach('connect', function (done) {
+            this.publisher = Publish('8080')
+            this.consumer = new Websocket('ws://localhost:8080')
 
-            beforeEach('connect', function (done) {
-                this.publisher = Publish('8080')
-                this.consumer = new Websocket('ws://localhost:8080')
+            this.stream = createConnection(this.consumer)
 
-                this.stream = createConnection(this.consumer)
+            done()
+        })
 
+        afterEach('disconnect', function (done) {
+            this.consumer.send('die')
+            this.consumer.on('close', function () {
                 done()
             })
 
-            afterEach('disconnect', function (done) {
-                this.consumer.send('die')
-                this.consumer.on('close', function () {
-                    done()
-                })
+            this.stream = null
+        })
 
-                this.stream = null
-            })
+        it('receives a message', function (done) {
+            const sub = take.call(this.stream, 1)
 
-            it('receives a message', function (done) {
-                const sub = take.call(this.stream.observable, 1)
+            sub.subscribe(function (message) {
+                expect(message).to.equal('OPEN')
 
-                sub.subscribe(function (message) {
-                    expect(message).to.equal('OPEN')
-
-                    done()
-                })
-            })
-
-            it('receives a stream of messages', function (done) {
-                const sub = take.call(this.stream.observable, 3).toArray()
-
-                sub.subscribe(function (message) {
-                    const expected = ['OPEN', '1', '2']
-
-                    expect(_.isEqual(message, expected)).to.equal(true)
-
-                    done()
-                })
+                done()
             })
         })
 
-        describe('onError', function () {
-            xit('forwards socket errors to onError', function (done) {
-                Err('8080')
-                var consumer = new Websocket('ws://localhost:8080')
-                var stream = createConnection(consumer)
+        it('receives a stream of messages', function (done) {
+            const sub = take.call(this.stream, 3).toArray()
 
-                stream.observable.subscribe(
-                    function onNext () {
-                    },
+            sub.subscribe(function (message) {
+                const expected = ['OPEN', '1', '2']
 
-                    function onError (err) {
-                        done(err)
-                    },
+                expect(_.isEqual(message, expected)).to.equal(true)
 
-                    function onCompleted () {
-                    }
-                )
+                done()
             })
-
         })
+    })
 
-        describe('onCompleted', function () {
-            it('forwards socket close to onCompleted', function (done) {
-                Publish('8080')
-                var consumer = new Websocket('ws://localhost:8080')
-                var stream = createConnection(consumer)
+    describe('error', function () {
+        xit('forwards socket errors to onError', function (done) {
+            Err('8080')
+            var consumer = new Websocket('ws://localhost:8080')
+            var stream = createConnection(consumer)
 
-                stream.observable.subscribe(
-                    function onNext () {
-                    },
+            stream.subscribe(
+                function onNext () {
+                },
 
-                    function onError () {
-                    },
+                function onError (err) {
+                    done(err)
+                },
 
-                    function onCompleted () {
-                        done()
-                    }
-                )
-
-                setTimeout(() => consumer.send('die'), 1000)
-            })
-
+                function onCompleted () {
+                }
+            )
         })
 
     })
+
+    describe('complete', function () {
+        it('forwards socket close to onCompleted', function (done) {
+            Publish('8080')
+            var consumer = new Websocket('ws://localhost:8080')
+            var stream = createConnection(consumer)
+
+            stream.subscribe(
+                function onNext () {
+                },
+
+                function onError () {
+                },
+
+                function onCompleted () {
+                    done()
+                }
+            )
+
+            setTimeout(() => consumer.send('die'), 1000)
+        })
+
+    })
+
 })

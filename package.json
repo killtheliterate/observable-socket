@@ -1,6 +1,6 @@
 {
   "name": "observable-socket",
-  "version": "3.0.2",
+  "version": "4.0.0",
   "description": "Wraps a websocket in an Observable.",
   "main": "dist/index.js",
   "scripts": {
@@ -9,7 +9,7 @@
     "lint:quiet": "eslint --quiet src/** test/**",
     "prepublish": "rm -rf ./dist && ./node_modules/.bin/babel src --out-dir dist",
     "pretest": "rm -rf ./dist && ./node_modules/.bin/babel src --out-dir dist;",
-    "test": "npm run lint:quiet && ./node_modules/.bin/mocha test/node && node test/browser/bootstrap & ./node_modules/.bin/karma start karma.conf.js --browsers Firefox --single-run; kill $(lsof -i:8086 -t)",
+    "test": "echo 'Run environment specific tests, k plox thanks.'",
     "test:browser": "node test/browser/bootstrap & npm run pretest && ./node_modules/.bin/karma start karma.conf.js --single-run; kill $(lsof -i:8086 -t)",
     "test:node": "npm run pretest && ./node_modules/.bin/mocha test/node"
   },
