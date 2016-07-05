@@ -1,6 +1,10 @@
 import debug from 'debug'
 import { EventEmitter } from 'events'
-import { Observable } from 'rxjs/Rx'
+import {
+    Observable,
+    Observer,
+    Subject,
+} from 'rxjs/Rx'
 import { has } from 'lodash'
 
 const log = debug('observable-socket')
@@ -74,8 +78,7 @@ export default function observableSocket (_ws) {
         }
     })
 
-    return {
-        send: message => readyToSend.then(send => send(message)),
-        observable: socketStream,
-    }
+    const observer = Observer.create(message => readyToSend.then(send => send(message)))
+
+    return new Subject(observer, socketStream)
 }
