@@ -3,8 +3,9 @@ import { EventEmitter } from 'events'
 import {
     Observable,
     Observer,
-    Subject,
+    Subject
 } from 'rxjs/Rx'
+
 import { has } from 'lodash'
 
 const log = debug('observable-socket')
