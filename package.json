@@ -1,6 +1,6 @@
 {
   "name": "observable-socket",
-  "version": "3.0.2",
+  "version": "4.0.0",
   "description": "Wraps a websocket in an Observable.",
   "main": "dist/index.js",
   "scripts": {
