@@ -7,7 +7,7 @@ An observable socket, no duh. Tested with
 [ws](https://github.com/websockets/ws) and
 [window.WebSocket](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket). 
 
-Observable Socket assumes a few things:
+`observable-socket` assumes a few things:
 * Promises are available. If you're targeting an environment that does not
   support native Promises, use
   [babel-polyfill](https://babeljs.io/docs/usage/polyfill/) or something
@@ -83,5 +83,9 @@ The `subscribe` represents incoming messages from the socket.
 `next` is a function to push messages into the socket. This will create
 a queue of messages that will not be sent until the socket is connected.
 
-# Subjects...
-More to come...
+# Reconnecting...
+
+`observable-socket` does not construct websockets, therefore there isn't
+a notion of "healing" a connection. Instead, when a socket drops, the
+`complete` of `observable-socket` is called, which can be leveraged into
+creating a new socket, and re-wrapping `observable-socket` around it.
