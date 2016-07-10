@@ -94,7 +94,7 @@ example of how this can be done:
 [requirebin](http://requirebin.com/?gist=2ec1f61d5404733d6918483730170447)
 
 ```javascript
-import observableSocket from 'observable-socket')
+import observableSocket from 'observable-socket'
 import Rx from 'rxjs'
 import EventEmitter from 'events'
 
