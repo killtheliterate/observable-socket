@@ -11,14 +11,14 @@ describe('down', function () {
     const ws = new EventEmitter()
     const socket = create(ws)
 
-    socket.take(1)
+    socket.down.take(1)
       .subscribe(
         el => expect(el).to.equal(1),
         done,
         noop
       )
 
-    socket
+    socket.down
       .reduce(sum, 0)
       .subscribe(
         el => expect(el).to.equal(6),
@@ -36,7 +36,7 @@ describe('down', function () {
     const ws = new EventEmitter()
     const socket = create(ws)
 
-    socket
+    socket.down
       .subscribe(
         noop,
         done,
@@ -50,7 +50,7 @@ describe('down', function () {
     const ws = new EventEmitter()
     const socket = create(ws)
 
-    socket
+    socket.down
       .subscribe(
         noop,
         err => {

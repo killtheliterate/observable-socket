@@ -26,21 +26,21 @@ import and use it.
 
 ```javascript
 import observableSocket from 'observable-socket'
+import ws from 'ws'
 
 /**
  * Create an echo socket by connecting to the echo socket provided by
  * websocket.org.
  */
-const echoSocket = observableSocket(new WebSocket('wss://echo.websocket.org'))
+const echoSocket = observableSocket(ws('wss://echo.websocket.org'))
 
 /**
  * Subscribing to `echoSocket` receives messages from the underlying
  * WebSocket.
  */
-echoSocket.subscribe(
-
-  function next (data) {
-    console.log(data)
+echoSocket.down.subscribe(
+  function next (msg) {
+    console.log(msg)
   },
 
   function error (e) {
@@ -50,13 +50,12 @@ echoSocket.subscribe(
   function complete () {
     console.warn('Socket has closed')
   }
-
 )
 
 /**
  * We can send messages too!
  */
-echoSocket.next('hi!')
+echoSocket.up('hi!')
 
 ```
 
@@ -71,38 +70,38 @@ echoSocket.next('hi!')
     var socket = ObservableSocket(new WebSocket('wss://echo.websocket.org'))
 
     // Send messages up the socket
-    socket.next('hello')
+    socket.up('hello')
 
     // Receive messages down the socket
-    socket.subscribe(
-        msg => console.log(msg),
+    socket.down.subscribe(
+        msg => console.log(msg.data),
         () => console.log('done'),
         err => console.error(err)
     )
 </script>
 ```
 
+# Differences between 4.x and 5.x
+
+- Having a bidirectional stream makes handling errors dumb, so
+`observable-socket` isn't a `Subject` in the 5.x release.
+- `observable-socket` no longer makes assumptions about what pieces of
+a `message` you want.
+
 # API
 
-This module exports a function that takes a WebSocket, and returns an RxJS
-[Subject](http://reactivex.io/rxjs/class/es6/Subject.js~Subject.html).
+This module exports a function that takes a WebSocket, and returns an object
+with two properties, `up` and `down`.
 
-Here's how to get a socket that connects to websocket.org's echo websocket:
+## socket.up
 
-```javascript
-import observableSocket from 'observable-socket'
-
-const socket = observableSocket(new WebSocket('wss://echo.websocket.org'))
-```
-
-## socket.subscribe
-
-The `subscribe` represents incoming messages from the socket.
-
-## socket.next
-
-`next` is a function to push messages into the socket. This will create
+`up` is a function to push messages up the socket. This will create
 a queue of messages that will not be sent until the socket is connected.
+
+## socket.down
+
+`down` is an [RxJS](https://github.com/ReactiveX/RxJS) stream. You can
+`subscribe to it`.
 
 # Reconnecting...
 
@@ -115,14 +114,14 @@ example of how this can be done:
 [requirebin](http://requirebin.com/?gist=2ec1f61d5404733d6918483730170447)
 
 ```javascript
-import observableSocket from 'observable-socket'
-import Rx from 'rxjs'
 import EventEmitter from 'events'
+import Rx from 'rxjs'
+import observableSocket from 'observable-socket'
 
 function makeObservableLoop (socketEmitter, send, receive) {
     socketEmitter.once('open', function onSocketEmit (wSocket) {
         const oSocket = observableSocket(wSocket)
-        const sendSubscription = send.subscribe(msg => oSocket.next(msg))
+        const sendSubscription = send.subscribe(msg => oSocket.up(msg))
 
         oSocket.subscribe(
             function onNext (msg) {
@@ -175,20 +174,20 @@ function init (socketEmitter) {
 
     return {
         send: send,
-        read: receive,
+        receive: receive,
     }
 }
 
 const emitter = new EventEmitter()
 
 makeSocketLoop(emitter)
-const theSubjectz = init(emitter)
+const persistent = init(emitter)
 
 setInterval(function () {
-  theSubjectz.send('echo, you there?')
+  persistent.send('echo, you there?')
 }, 1000)
 
-theSubjectz.read.subscribe(function (el) {
+persistent.receive.subscribe(function (el) {
   console.log(el)
 })
 ```

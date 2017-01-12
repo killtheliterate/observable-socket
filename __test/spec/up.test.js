@@ -3,7 +3,7 @@ var expect = require('chai').expect
 
 var create = require('../../dist/index')
 
-const send = (socket, msg) => socket.next(msg)
+const send = (socket, msg) => socket.up(msg)
 
 describe('up', function () {
   it('sends messages', function (done) {
@@ -36,13 +36,8 @@ describe('up', function () {
     setTimeout(() => ws.emit('open'), 50)
   })
 
-  it('swallows errors (bummer...)', function (done) {
+  it('handles errors', function (done) {
     const ws = new EventEmitter()
-
-    process.once('unhandledRejection', function (err) {
-      expect(err.message).to.equal('blech')
-      done()
-    })
 
     ws.readyState = 1
 
@@ -52,6 +47,9 @@ describe('up', function () {
 
     const socket = create(ws)
 
-    send(socket, 'hello human...')
+    send(socket, 'hello human...').catch(err => {
+      expect(err.message).to.equal('blech')
+      done()
+    })
   })
 })

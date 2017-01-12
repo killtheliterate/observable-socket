@@ -1,9 +1,5 @@
 import debug from 'debug'
-import {
-  Observable,
-  Subject,
-  Subscriber
-} from 'rxjs/Rx'
+import { Observable } from 'rxjs/Rx'
 
 const log = debug('observable-socket')
 
@@ -56,7 +52,8 @@ export default function observableSocket (_ws) {
     }
   })
 
-  const sendToWebSocket = Subscriber.create(message => readyToSend.then(send => send(message)))
-
-  return Subject.create(sendToWebSocket, webSocketObservable)
+  return {
+    up: message => readyToSend.then(send => send(message)),
+    down: webSocketObservable
+  }
 }
