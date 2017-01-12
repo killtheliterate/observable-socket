@@ -13,8 +13,6 @@ An observable socket, no duh. Tested with
   support native Promises, use
   [babel-polyfill](https://babeljs.io/docs/usage/polyfill/) or something
   similar.
-* You'll be using something like [Browserify](http://browserify.org/) or
-  [webpack](https://webpack.github.io/) when writing for the web.
 
 # Usage
 
@@ -26,7 +24,7 @@ npm install observable-socket
 
 import and use it.
 
-```js
+```javascript
 import observableSocket from 'observable-socket'
 
 /**
@@ -62,6 +60,28 @@ echoSocket.next('hi!')
 
 ```
 
+```html
+<script type="text/javascript">
+    window.debug = function () {} // debug however you like
+</script>
+<script type="text/javascript" src="https://unpkg.com/@reactivex/rxjs/dist/global/Rx.js"></script>
+<script type="text/javascript" src="https://unpkg.com/observable-socket@5.0.0"></script>
+
+<script>
+    var socket = ObservableSocket(new WebSocket('wss://echo.websocket.org'))
+
+    // Send messages up the socket
+    socket.next('hello')
+
+    // Receive messages down the socket
+    socket.subscribe(
+        msg => console.log(msg),
+        () => console.log('done'),
+        err => console.error(err)
+    )
+</script>
+```
+
 # API
 
 This module exports a function that takes a WebSocket, and returns an RxJS
@@ -69,7 +89,7 @@ This module exports a function that takes a WebSocket, and returns an RxJS
 
 Here's how to get a socket that connects to websocket.org's echo websocket:
 
-```js
+```javascript
 import observableSocket from 'observable-socket'
 
 const socket = observableSocket(new WebSocket('wss://echo.websocket.org'))
