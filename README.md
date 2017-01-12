@@ -101,93 +101,14 @@ a queue of messages that will not be sent until the socket is connected.
 ## socket.down
 
 `down` is an [RxJS](https://github.com/ReactiveX/RxJS) stream. You can
-`subscribe to it`.
+`subscribe` to it.
 
 # Reconnecting...
 
-`observable-socket` does not construct websockets, therefore there isn't
+`observable-socket` does not construct WebSockets, therefore there isn't
 a notion of "healing" a connection. Instead, when a socket drops, the
 `complete` of `observable-socket` is called, which can be leveraged into
 creating a new socket, and re-wrapping `observable-socket` around it. An
 example of how this can be done:
-
-[requirebin](http://requirebin.com/?gist=2ec1f61d5404733d6918483730170447)
-
-```javascript
-import EventEmitter from 'events'
-import Rx from 'rxjs'
-import observableSocket from 'observable-socket'
-
-function makeObservableLoop (socketEmitter, send, receive) {
-    socketEmitter.once('open', function onSocketEmit (wSocket) {
-        const oSocket = observableSocket(wSocket)
-        const sendSubscription = send.subscribe(msg => oSocket.up(msg))
-
-        oSocket.subscribe(
-            function onNext (msg) {
-                receive.next(msg)
-            },
-
-            function onError (err) {
-                error(err)
-                sendSubscription.unsubscribe()
-
-                makeObservableLoop(socketEmitter, send, receive)
-            },
-
-            function onComplete () {
-                sendSubscription.unsubscribe()
-
-                makeObservableLoop(socketEmitter, send, receive)
-            }
-        )
-    })
-}
-
-function makeSocketLoop (emitter) {
-  const websocket = new WebSocket('wss://echo.websocket.org')
-
-  function onOpen () {
-    emitter.emit('open', websocket)
-    
-    setTimeout(function () {
-      websocket.close()
-    }, 5000)
-  }
-
-  function onClose () {
-    makeSocketLoop(emitter)
-  }
-  
-  websocket.onopen = onOpen
-  websocket.onclose = onClose
-}
-
-function init (socketEmitter) {
-    const _send = new Rx.Subject()
-    const _receive = new Rx.Subject()
-
-    makeObservableLoop(socketEmitter, _send, _receive)
-
-    const send = msg => _send.next(JSON.stringify(msg))
-    const receive = _receive.asObservable()
-
-    return {
-        send: send,
-        receive: receive,
-    }
-}
-
-const emitter = new EventEmitter()
-
-makeSocketLoop(emitter)
-const persistent = init(emitter)
-
-setInterval(function () {
-  persistent.send('echo, you there?')
-}, 1000)
-
-persistent.receive.subscribe(function (el) {
-  console.log(el)
-})
-```
+[requirebin](http://requirebin.com/?gist=2ec1f61d5404733d6918483730170447),
+[gist](https://gist.github.com/killtheliterate/2ec1f61d5404733d6918483730170447#file-index-js)
