@@ -1,3 +1,3 @@
-import connection from './connection'
+var connection = require('./connection').default
 
 module.exports = connection
