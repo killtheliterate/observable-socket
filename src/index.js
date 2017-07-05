@@ -1,3 +1,3 @@
-var connection = require('./connection').default
+var connection = require('./connection')
 
 module.exports = connection
