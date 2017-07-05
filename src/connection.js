@@ -1,9 +1,8 @@
 import debug from 'debug'
-import { Observable } from 'rxjs/Rx'
-
-const log = debug('observable-socket')
+import Rx from 'rxjs/Rx'
 
 export default function observableSocket (_ws) {
+  const log = debug('observable-socket')
   const ready = () => _ws.readyState === 1
   const send = message => _ws.send(message)
 
@@ -15,7 +14,7 @@ export default function observableSocket (_ws) {
 
       resolve(send)
     } else {
-      Observable.fromEvent(_ws, 'open')
+      Rx.Observable.fromEvent(_ws, 'open')
         .take(1)
         .subscribe(() => resolve(send))
     }
@@ -23,27 +22,27 @@ export default function observableSocket (_ws) {
 
   // Compose socket event streams, so that external subscribers have a single
   // interface that forwards socket events to onNext, onError and onCompleted.
-  const webSocketObservable = Observable.create(function (observer) {
-    const messageSubscription = Observable.fromEvent(_ws, 'message')
-            .subscribe(function onNext (e) {
-              debug('observable-socket:onNext')('message')
+  const webSocketObservable = Rx.Observable.create(function (observer) {
+    const messageSubscription = Rx.Observable.fromEvent(_ws, 'message')
+      .subscribe(function handleNext (e) {
+        debug('observable-socket:handleNext')('message')
 
-              observer.next(e)
-            })
+        observer.next(e)
+      })
 
-    const errorSubscription = Observable.fromEvent(_ws, 'error')
-            .subscribe(function onNext (e) {
-              log('error', e)
+    const errorSubscription = Rx.Observable.fromEvent(_ws, 'error')
+      .subscribe(function handleNext (e) {
+        log('error', e)
 
-              observer.error(e)
-            })
+        observer.error(e)
+      })
 
-    const closeSubscription = Observable.fromEvent(_ws, 'close')
-            .subscribe(function onNext (e) {
-              log('closed')
+    const closeSubscription = Rx.Observable.fromEvent(_ws, 'close')
+      .subscribe(function handleNext (e) {
+        log('closed')
 
-              observer.complete(e)
-            })
+        observer.complete(e)
+      })
 
     return function cleanup () {
       closeSubscription.unsubscribe()

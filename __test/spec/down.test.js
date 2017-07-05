@@ -1,7 +1,7 @@
-var EventEmitter = require('events')
-var expect = require('chai').expect
+const EventEmitter = require('events')
+const expect = require('chai').expect
 
-var create = require('../../dist/index')
+const create = require('../../dist/cjs')
 
 const sum = (acc, el) => acc + el
 const noop = () => null

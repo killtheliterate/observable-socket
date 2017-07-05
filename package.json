@@ -2,11 +2,10 @@
   "name": "observable-socket",
   "version": "5.0.0",
   "description": "Wraps a websocket in an Observable.",
-  "main": "dist/index.js",
-  "module": "src/connection.js",
+  "main": "dist/cjs/index.js",
+  "module": "dist/es/index.js",
   "scripts": {
-    "build": "webpack --optimize-minimize --display-used-exports",
-    "build:dev": "webpack",
+    "build": "./node_modules/.bin/cross-env NODE_ENV=production node build.js",
     "prepublish": "npm run build",
     "pretest": "npm run build",
     "test": "standard && mocha __test"
@@ -44,17 +43,24 @@
   "license": "MIT",
   "dependencies": {
     "debug": "^2.2.0",
-    "rxjs": "^5.0.0-beta.6"
+    "rxjs": "^5.4.1"
   },
   "devDependencies": {
-    "babel-core": "^6.21.0",
-    "babel-loader": "^6.2.10",
-    "babel-preset-es2015": "^6.18.0",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-preset-latest": "^6.24.1",
     "chai": "^3.4.1",
+    "cross-env": "^5.0.1",
     "mocha": "^2.3.4",
     "mock-socket": "^6.0.4",
+    "rollup": "^0.43.0",
+    "rollup-plugin-babel": "^2.7.1",
+    "rollup-plugin-commonjs": "^8.0.2",
+    "rollup-plugin-node-builtins": "^2.1.2",
+    "rollup-plugin-node-resolve": "^3.0.0",
+    "rollup-plugin-replace": "^1.1.1",
+    "rollup-plugin-uglify": "^2.0.1",
+    "rollup-watch": "^4.0.0",
     "standard": "^8.6.0",
-    "webpack": "^2.2.0-rc.4",
     "ws": "^0.8.1"
   }
 }
