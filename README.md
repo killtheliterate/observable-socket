@@ -61,10 +61,10 @@ echoSocket.up('hi!')
 
 ```html
 <script type="text/javascript">
-    window.debug = function () {} // debug however you like
+    window.debug = lbl => msg => console.log(`${lbl}: ${msg}`) // debug however you like
 </script>
 <script type="text/javascript" src="https://unpkg.com/@reactivex/rxjs/dist/global/Rx.js"></script>
-<script type="text/javascript" src="https://unpkg.com/observable-socket@5.0.1/dist/umd/index.min.js"></script>
+<script type="text/javascript" src="https://unpkg.com/observable-socket@5.0.2/dist/umd/index.min.js"></script>
 
 <script>
     var socket = ObservableSocket(new WebSocket('wss://echo.websocket.org'))
