@@ -13,6 +13,7 @@ An observable socket, no duh. Tested with
   support native Promises, use
   [babel-polyfill](https://babeljs.io/docs/usage/polyfill/) or something
   similar.
+* JavaScript is still [relevant](https://en.wikipedia.org/wiki/Relevance)
 
 # Usage
 
@@ -84,9 +85,9 @@ echoSocket.up('hi!')
 # Differences between 4.x and 5.x
 
 - Having a bidirectional stream makes handling errors dumb, so
-`observable-socket` isn't a `Subject` in the 5.x release.
+  `observable-socket` isn't a `Subject` in the 5.x release.
 - `observable-socket` no longer makes assumptions about what pieces of
-a `message` you want.
+  a `message` you want.
 
 # API
 
@@ -110,5 +111,31 @@ a notion of "healing" a connection. Instead, when a socket drops, the
 `complete` of `observable-socket` is called, which can be leveraged into
 creating a new socket, and re-wrapping `observable-socket` around it. An
 example of how this can be done:
-[requirebin](http://requirebin.com/?gist=2ec1f61d5404733d6918483730170447),
-[gist](https://gist.github.com/killtheliterate/2ec1f61d5404733d6918483730170447#file-index-js)
+
+* [requirebin](http://requirebin.com/?gist=2ec1f61d5404733d6918483730170447)
+* [gist](https://gist.github.com/killtheliterate/2ec1f61d5404733d6918483730170447#file-index-js)
+
+# Bundles and packages and boxes and goodies...
+
+There are a few different bundles in `dist/`:
+
+* umd
+* commonjs
+* esm
+* commonjs and esm [observable](https://github.com/ReactiveX/RxJS#es6-via-npm)
+  without any operator bindings.
+
+If you want to keep your build size a lot smaller, you can use
+`observable-socket` with `RxJS` operators, like so:
+
+```javascript
+import observableSocket from 'observable-socket/dist/esm/bind'
+import { map } from 'rxjs/operator/map'
+
+// This requires a transpile step for https://github.com/tc39/proposal-bind-operator
+const echoSocket = observableSocket(new WebSocket('wss://echo.websocket.org'))
+echoSocket::map(msg => `mapped... ${msg}`)
+
+// OR...
+map.call(echoSocket, msg => `mapped... ${msg}`)
+```

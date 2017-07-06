@@ -1,5 +1,5 @@
 import debug from 'debug'
-import Rx from 'rxjs/Rx'
+import Observable from './observable-all'
 
 export default function observableSocket (_ws) {
   const log = debug('observable-socket')
@@ -14,7 +14,7 @@ export default function observableSocket (_ws) {
 
       resolve(send)
     } else {
-      Rx.Observable.fromEvent(_ws, 'open')
+      Observable.fromEvent(_ws, 'open')
         .take(1)
         .subscribe(() => resolve(send))
     }
@@ -22,22 +22,22 @@ export default function observableSocket (_ws) {
 
   // Compose socket event streams, so that external subscribers have a single
   // interface that forwards socket events to onNext, onError and onCompleted.
-  const webSocketObservable = Rx.Observable.create(function (observer) {
-    const messageSubscription = Rx.Observable.fromEvent(_ws, 'message')
+  const webSocketObservable = Observable.create(function (observer) {
+    const messageSubscription = Observable.fromEvent(_ws, 'message')
       .subscribe(function handleNext (e) {
         debug('observable-socket:handleNext')('message')
 
         observer.next(e)
       })
 
-    const errorSubscription = Rx.Observable.fromEvent(_ws, 'error')
+    const errorSubscription = Observable.fromEvent(_ws, 'error')
       .subscribe(function handleNext (e) {
         log('error', e)
 
         observer.error(e)
       })
 
-    const closeSubscription = Rx.Observable.fromEvent(_ws, 'close')
+    const closeSubscription = Observable.fromEvent(_ws, 'close')
       .subscribe(function handleNext (e) {
         log('closed')
 
