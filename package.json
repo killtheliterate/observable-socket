@@ -44,7 +44,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "debug": "^2.2.0",
+    "debug": "^3.1.0",
     "rxjs": "^5.4.1"
   },
   "devDependencies": {
@@ -52,19 +52,19 @@
     "babel-plugin-transform-function-bind": "^6.22.0",
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-latest": "^6.24.1",
-    "chai": "^3.4.1",
+    "chai": "^4.1.2",
     "cross-env": "^5.0.1",
-    "mocha": "^2.3.4",
-    "mock-socket": "^6.0.4",
-    "rollup": "^0.43.0",
-    "rollup-plugin-babel": "^2.7.1",
+    "mocha": "^4.0.1",
+    "mock-socket": "^7.1.0",
+    "rollup": "^0.51.7",
+    "rollup-plugin-babel": "^3.0.2",
     "rollup-plugin-commonjs": "^8.0.2",
     "rollup-plugin-node-builtins": "^2.1.2",
     "rollup-plugin-node-resolve": "^3.0.0",
-    "rollup-plugin-replace": "^1.1.1",
+    "rollup-plugin-replace": "^2.0.0",
     "rollup-plugin-uglify": "^2.0.1",
     "rollup-watch": "^4.0.0",
-    "standard": "^8.6.0",
-    "ws": "^0.8.1"
+    "standard": "^10.0.3",
+    "ws": "^3.3.1"
   }
 }
