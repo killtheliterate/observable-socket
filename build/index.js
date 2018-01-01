@@ -9,7 +9,7 @@ const uglify = require('rollup-plugin-uglify')
 const env = process.env.NODE_ENV
 
 const rollupConfig = {
-  entry: 'src/index.js',
+  input: 'src/index.js',
   external: [
     'debug',
     'rxjs/Observable',
@@ -45,8 +45,8 @@ if (process.env.BABEL_ENV === 'observableonly') {
     .then(bundle => {
       bundle.write({
         format: 'cjs',
-        dest: 'dist/cjs/bind.js',
-        sourceMap: true
+        file: 'dist/cjs/bind.js',
+        sourcemap: true
       })
     })
 
@@ -56,8 +56,8 @@ if (process.env.BABEL_ENV === 'observableonly') {
     .then(bundle => {
       bundle.write({
         format: 'es',
-        dest: 'dist/esm/bind.js',
-        sourceMap: true
+        file: 'dist/esm/bind.js',
+        sourcemap: true
       })
     })
 } else {
@@ -66,10 +66,10 @@ if (process.env.BABEL_ENV === 'observableonly') {
     .rollup(Object.assign({}, rollupConfig, { plugins: plugins }))
     .then(function (bundle) {
       bundle.write({
-        dest: 'dist/umd/index.js',
+        file: 'dist/umd/index.js',
         format: 'umd',
-        moduleName: 'ObservableSocket',
-        sourceMap: true,
+        name: 'ObservableSocket',
+        sourcemap: true,
         globals: {
           'debug': 'debug',
           'rxjs/Rx': 'Rx'
@@ -82,10 +82,10 @@ if (process.env.BABEL_ENV === 'observableonly') {
     .rollup(Object.assign({}, rollupConfig, { plugins: [...plugins, uglify(uglifyConfig)] }))
     .then(bundle => {
       bundle.write({
-        dest: 'dist/umd/index.min.js',
+        file: 'dist/umd/index.min.js',
         format: 'umd',
-        moduleName: 'ObservableSocket',
-        sourceMap: true,
+        name: 'ObservableSocket',
+        sourcemap: true,
         globals: {
           'debug': 'debug',
           'rxjs/Rx': 'Rx'
@@ -99,8 +99,8 @@ if (process.env.BABEL_ENV === 'observableonly') {
     .then(bundle => {
       bundle.write({
         format: 'cjs',
-        dest: 'dist/cjs/index.js',
-        sourceMap: true
+        file: 'dist/cjs/index.js',
+        sourcemap: true
       })
     })
 
@@ -110,8 +110,8 @@ if (process.env.BABEL_ENV === 'observableonly') {
     .then(bundle => {
       bundle.write({
         format: 'es',
-        dest: 'dist/esm/index.js',
-        sourceMap: true
+        file: 'dist/esm/index.js',
+        sourcemap: true
       })
     })
 }
