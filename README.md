@@ -1,10 +1,9 @@
 [![Build Status](https://travis-ci.org/killtheliterate/observable-socket.svg?branch=master)](https://travis-ci.org/killtheliterate/observable-socket)
 [![Standard - JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
 [![npm version](https://img.shields.io/npm/v/observable-socket.svg)](https://www.npmjs.com/package/observable-socket)
+[![Greenkeeper badge](https://badges.greenkeeper.io/killtheliterate/observable-socket.svg)](https://greenkeeper.io/)
 
 # observable-socket
-
-[![Greenkeeper badge](https://badges.greenkeeper.io/killtheliterate/observable-socket.svg)](https://greenkeeper.io/)
 
 An observable socket, no duh. Tested with
 [ws](https://github.com/websockets/ws) and
