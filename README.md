@@ -4,6 +4,8 @@
 
 # observable-socket
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/killtheliterate/observable-socket.svg)](https://greenkeeper.io/)
+
 An observable socket, no duh. Tested with
 [ws](https://github.com/websockets/ws) and
 [window.WebSocket](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket). 
