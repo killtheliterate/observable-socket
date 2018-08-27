@@ -28,14 +28,14 @@ npm install observable-socket
 import and use it.
 
 ```javascript
-import observableSocket from 'observable-socket'
-import ws from 'ws'
+const observableSocket = require('observable-socket')
+const WS = require('ws')
 
 /**
  * Create an echo socket by connecting to the echo socket provided by
  * websocket.org.
  */
-const echoSocket = observableSocket(ws('wss://echo.websocket.org'))
+const echoSocket = observableSocket(new WS('wss://echo.websocket.org'))
 
 /**
  * Subscribing to `echoSocket` receives messages from the underlying
