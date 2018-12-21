@@ -1,4 +1,5 @@
 .DS_Store
+.rpt2_cache
 .tern-port
 dist/*
 node_modules

@@ -2,24 +2,22 @@
   "name": "observable-socket",
   "version": "5.2.0",
   "description": "Wraps a websocket in an Observable.",
-  "main": "dist/cjs/index.js",
-  "module": "dist/esm/index.js",
+  "browser": "dist/browser.min.js",
+  "main": "dist/cjs.js",
+  "module": "dist/esm.js",
   "scripts": {
-    "build": "npm run build:a && npm run build:b",
-    "build:a": "./node_modules/.bin/cross-env NODE_ENV=production node build/index.js",
-    "build:b": "./node_modules/.bin/cross-env NODE_ENV=production BABEL_ENV=observableonly node build/index.js",
-    "prepublishOnly": "npm run build",
-    "pretest": "npm run build",
-    "test": "standard && mocha __test && mocha __test/spec/bind.test.js"
+    "build": "npm run build:types && npm run build:module",
+    "build:module": "rollup -c",
+    "build:types": "tsc --emitDeclarationOnly",
+    "prepublishOnly": "npm run test && npm run build",
+    "test": "npm run util:lint && npm run util:type-check && jest",
+    "util:lint": "tslint -p tsconfig.json -c tslint.json",
+    "util:type-check": "tsc -p ./tsconfig.json --noEmit"
   },
-  "standard": {
-    "globals": [
-      "WebSocket",
-      "afterEach",
-      "beforeEach",
-      "describe",
-      "it",
-      "xit"
+  "jest": {
+    "preset": "ts-jest",
+    "modulePathIgnorePatterns": [
+      "<rootDir>/dist/"
     ]
   },
   "keywords": [
@@ -44,29 +42,32 @@
   },
   "license": "MIT",
   "dependencies": {
-    "debug": "3.1.0",
-    "rxjs": "^5.5.10"
+    "debug": "^4.1.0",
+    "rxjs": "^6.3.3"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-plugin-external-helpers": "^6.22.0",
-    "babel-plugin-transform-function-bind": "^6.22.0",
-    "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-latest": "^6.24.1",
-    "chai": "4.1.2",
-    "cross-env": "^5.1.4",
-    "mocha": "5.0.1",
-    "mock-socket": "8.0.2",
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.2.2",
+    "@babel/plugin-proposal-class-properties": "^7.2.3",
+    "@babel/plugin-proposal-object-rest-spread": "^7.2.0",
+    "@babel/preset-env": "^7.2.3",
+    "@babel/preset-typescript": "^7.1.0",
+    "@types/debug": "0.0.31",
+    "@types/jest": "^23.3.10",
+    "cross-env": "^5.2.0",
+    "jest": "^23.6.0",
     "rollup": "0.65.0",
-    "rollup-plugin-babel": "3.0.7",
-    "rollup-plugin-commonjs": "^9.1.6",
-    "rollup-plugin-node-builtins": "^2.1.2",
-    "rollup-plugin-node-resolve": "^3.3.0",
+    "rollup-plugin-babel": "^4.0.1",
+    "rollup-plugin-commonjs": "^9.2.0",
+    "rollup-plugin-node-resolve": "^3.4.0",
     "rollup-plugin-replace": "2.0.0",
     "rollup-plugin-uglify": "^3.0.0",
     "rollup-watch": "^4.3.1",
-    "standard": "10.0.3",
+    "ts-jest": "^23.10.5",
+    "tslint": "^5.12.0",
+    "tslint-config-standard": "^8.0.1",
+    "typescript": "^3.2.2",
+    "typescript-tslint-plugin": "^0.2.1",
     "ws": "6.0.0"
   }
 }

@@ -1,27 +1,39 @@
-const EventEmitter = require('events')
-const expect = require('chai').expect
+import EventEmitter from 'events'
 
-const create = require('../../dist/cjs')
+import {
+  reduce,
+  take
+} from 'rxjs/operators'
 
-const sum = (acc, el) => acc + el
+// ---------------------------------------------------------------------------
+
+import { create } from '../index'
+
+// ---------------------------------------------------------------------------
+
+const sum = (acc: any, el: any) => acc + el
 const noop = () => null
+
+class WS extends EventEmitter {
+  readyState = 1
+  send = () => undefined
+}
 
 describe('down', function () {
   it('observes messages', function (done) {
-    const ws = new EventEmitter()
+    const ws = new WS()
     const socket = create(ws)
 
-    socket.down.take(1)
+    socket.down.pipe(take(1))
       .subscribe(
-        el => expect(el).to.equal(1),
+        (el: number) => expect(el).toEqual(1),
         done,
         noop
       )
 
-    socket.down
-      .reduce(sum, 0)
+    socket.down.pipe(reduce(sum, 0))
       .subscribe(
-        el => expect(el).to.equal(6),
+        (el: number) => expect(el).toEqual(6),
         done,
         () => done()
       )
@@ -33,7 +45,7 @@ describe('down', function () {
   })
 
   it('completes', function (done) {
-    const ws = new EventEmitter()
+    const ws = new WS()
     const socket = create(ws)
 
     socket.down
@@ -47,14 +59,14 @@ describe('down', function () {
   })
 
   it('wraps errors', function (done) {
-    const ws = new EventEmitter()
+    const ws = new WS()
     const socket = create(ws)
 
     socket.down
       .subscribe(
         noop,
-        err => {
-          expect(err.message).to.equal('you done messed up')
+        (err: { message: string }) => {
+          expect(err.message).toEqual('you done messed up')
           done()
         }
       )

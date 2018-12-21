@@ -1,12 +1,21 @@
 import debug from 'debug'
-import Observable from './observable-all'
+import { EventTargetLike } from 'rxjs/internal/observable/fromEvent'
+import { Observable, fromEvent } from 'rxjs'
+import { take } from 'rxjs/operators'
 
-export default function observableSocket (_ws) {
+// ---------------------------------------------------------------------------
+
+export interface WebSocketLike {
+  readyState: number
+  send: (...args: unknown[]) => void
+}
+
+export function create (_ws: WebSocketLike & EventTargetLike<WebSocketLike>) {
   const log = debug('observable-socket')
   const ready = () => _ws.readyState === 1
-  const send = message => _ws.send(message)
+  const send = (message: unknown) => _ws.send(message)
 
-  const readyToSend = new Promise(function readyToSend (resolve) {
+  const readyToSend: Promise<typeof send> = new Promise((resolve) => {
     // If we make an Observable from an already connected socket, we'll never
     // hear anything about 'open'.
     if (ready()) {
@@ -14,30 +23,28 @@ export default function observableSocket (_ws) {
 
       resolve(send)
     } else {
-      Observable.fromEvent(_ws, 'open')
-        .take(1)
-        .subscribe(() => resolve(send))
+      fromEvent(_ws, 'open').pipe(take(1)).subscribe(() => resolve(send))
     }
   })
 
   // Compose socket event streams, so that external subscribers have a single
   // interface that forwards socket events to onNext, onError and onCompleted.
-  const webSocketObservable = Observable.create(function (observer) {
-    const messageSubscription = Observable.fromEvent(_ws, 'message')
+  const webSocketObservable = Observable.create(function (observer: any) {
+    const messageSubscription = fromEvent(_ws, 'message')
       .subscribe(function handleNext (e) {
         debug('observable-socket:handleNext')('message')
 
         observer.next(e)
       })
 
-    const errorSubscription = Observable.fromEvent(_ws, 'error')
+    const errorSubscription = fromEvent(_ws, 'error')
       .subscribe(function handleNext (e) {
         log('error', e)
 
         observer.error(e)
       })
 
-    const closeSubscription = Observable.fromEvent(_ws, 'close')
+    const closeSubscription = fromEvent(_ws, 'close')
       .subscribe(function handleNext (e) {
         log('closed')
 
@@ -52,7 +59,7 @@ export default function observableSocket (_ws) {
   })
 
   return {
-    up: message => readyToSend.then(send => send(message)),
+    up: (message: unknown) => readyToSend.then(send => send(message)),
     down: webSocketObservable
   }
 }
