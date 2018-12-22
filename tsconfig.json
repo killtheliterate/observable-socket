@@ -1,0 +1,26 @@
+{
+  "include": [ "src" ],
+  "exclude": [ "node_modules", "dist"],
+
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "declaration": true,
+    "esModuleInterop": true,
+    "module": "es2015",
+    "moduleResolution": "node",
+    "noUnusedLocals": true,
+    "declarationDir": "dist",
+    "noUnusedParameters": true,
+    "strict": true,
+    "target": "es2015",
+
+    "lib": [
+      "dom",
+      "esnext"
+    ],
+
+    "plugins": [
+      { "name": "typescript-tslint-plugin"}
+    ]
+  }
+}

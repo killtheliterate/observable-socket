@@ -1,8 +1,8 @@
 [![Build Status](https://travis-ci.org/killtheliterate/observable-socket.svg?branch=master)](https://travis-ci.org/killtheliterate/observable-socket)
-[![Standard - JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
-[![npm version](https://img.shields.io/npm/v/observable-socket.svg)](https://www.npmjs.com/package/observable-socket)
 [![Greenkeeper badge](https://badges.greenkeeper.io/killtheliterate/observable-socket.svg)](https://greenkeeper.io/)
 [![Known Vulnerabilities](https://snyk.io/test/github/killtheliterate/observable-socket/badge.svg?targetFile=package.json)](https://snyk.io/test/github/killtheliterate/observable-socket?targetFile=package.json)
+[![Standard - JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
+[![npm version](https://img.shields.io/npm/v/observable-socket.svg)](https://www.npmjs.com/package/observable-socket)
 
 # observable-socket
 
@@ -10,32 +10,30 @@ An observable socket, no duh. Tested with
 [ws](https://github.com/websockets/ws) and
 [window.WebSocket](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket). 
 
-`observable-socket` assumes a few things:
-* Promises are available. If you're targeting an environment that does not
-  support native Promises, use
-  [babel-polyfill](https://babeljs.io/docs/usage/polyfill/) or something
-  similar.
-* JavaScript is still [relevant](https://en.wikipedia.org/wiki/Relevance)
+`observable-socket` assumes `Promise` is available. If you're targeting an environment that does not
+support native Promises, use
+[babel-polyfill](https://babeljs.io/docs/usage/polyfill/) or something
+similar.
 
 # Usage
 
 install it.
 
 ```shell
-npm install observable-socket
+npm i observable-socket
 ```
 
 import and use it.
 
 ```javascript
-const observableSocket = require('observable-socket')
+const ObservableSocket = require('observable-socket')
 const WS = require('ws')
 
 /**
  * Create an echo socket by connecting to the echo socket provided by
  * websocket.org.
  */
-const echoSocket = observableSocket(new WS('wss://echo.websocket.org'))
+const echoSocket = ObservableSocket.create(new WS('wss://echo.websocket.org'))
 
 /**
  * Subscribing to `echoSocket` receives messages from the underlying
@@ -43,7 +41,7 @@ const echoSocket = observableSocket(new WS('wss://echo.websocket.org'))
  */
 echoSocket.down.subscribe(
   function next (msg) {
-    console.log(msg)
+    console.log(msg.data)
   },
 
   function error (e) {
@@ -59,18 +57,17 @@ echoSocket.down.subscribe(
  * We can send messages too!
  */
 echoSocket.up('hi!')
-
 ```
 
 ```html
 <script type="text/javascript">
     window.debug = lbl => msg => console.log(`${lbl}: ${msg}`) // debug however you like
 </script>
-<script type="text/javascript" src="https://unpkg.com/@reactivex/rxjs/dist/global/Rx.js"></script>
-<script type="text/javascript" src="https://unpkg.com/observable-socket@5.0.2/dist/umd/index.min.js"></script>
+<script type="text/javascript" src="https://unpkg.com/rxjs/bundles/rxjs.umd.min.js"></script>
+<script type="text/javascript" src="https://unpkg.com/observable-socket@6.0.0/dist/browser.min.js"></script>
 
 <script>
-    var socket = ObservableSocket(new WebSocket('wss://echo.websocket.org'))
+    var socket = ObservableSocket.create(new WebSocket('wss://echo.websocket.org'))
 
     // Send messages up the socket
     socket.up('hello')
@@ -83,13 +80,6 @@ echoSocket.up('hi!')
     )
 </script>
 ```
-
-# Differences between 4.x and 5.x
-
-- Having a bidirectional stream makes handling errors dumb, so
-  `observable-socket` isn't a `Subject` in the 5.x release.
-- `observable-socket` no longer makes assumptions about what pieces of
-  a `message` you want.
 
 # API
 
@@ -121,23 +111,6 @@ example of how this can be done:
 
 There are a few different bundles in `dist/`:
 
-* umd
+* browser
 * commonjs
 * esm
-* commonjs and esm [observable](https://github.com/ReactiveX/RxJS#es6-via-npm)
-  without any operator bindings.
-
-If you want to keep your build size a lot smaller, you can use
-`observable-socket` with `RxJS` operators, like so:
-
-```javascript
-import observableSocket from 'observable-socket/dist/esm/bind'
-import { map } from 'rxjs/operator/map'
-
-// This requires a transpile step for https://github.com/tc39/proposal-bind-operator
-const echoSocket = observableSocket(new WebSocket('wss://echo.websocket.org'))
-echoSocket::map(msg => `mapped... ${msg}`)
-
-// OR...
-map.call(echoSocket, msg => `mapped... ${msg}`)
-```
