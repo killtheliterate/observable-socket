@@ -52,7 +52,7 @@
     "@babel/plugin-proposal-object-rest-spread": "^7.2.0",
     "@babel/preset-env": "^7.2.3",
     "@babel/preset-typescript": "^7.1.0",
-    "@types/debug": "0.0.31",
+    "@types/debug": "4.1.0",
     "@types/jest": "^23.3.10",
     "cross-env": "^5.2.0",
     "jest": "^23.6.0",
