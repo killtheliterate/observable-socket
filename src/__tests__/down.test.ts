@@ -11,7 +11,14 @@ import { create } from '../index'
 
 // ---------------------------------------------------------------------------
 
-const sum = (acc: any, el: any) => acc + el
+const sum = (acc: number, el: unknown) => {
+  if (typeof el === 'number') {
+    return acc + el
+  } else {
+    return acc
+  }
+}
+
 const noop = () => null
 
 class WS extends EventEmitter {
@@ -26,14 +33,14 @@ describe('down', function () {
 
     socket.down.pipe(take(1))
       .subscribe(
-        (el: number) => expect(el).toEqual(1),
+        (el) => expect(el).toEqual(1),
         done,
         noop
       )
 
     socket.down.pipe(reduce(sum, 0))
       .subscribe(
-        (el: number) => expect(el).toEqual(6),
+        (el) => expect(el).toEqual(6),
         done,
         () => done()
       )
