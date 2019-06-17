@@ -1,5 +1,4 @@
 [![Build Status](https://travis-ci.org/killtheliterate/observable-socket.svg?branch=master)](https://travis-ci.org/killtheliterate/observable-socket)
-[![Greenkeeper badge](https://badges.greenkeeper.io/killtheliterate/observable-socket.svg)](https://greenkeeper.io/)
 [![Known Vulnerabilities](https://snyk.io/test/github/killtheliterate/observable-socket/badge.svg?targetFile=package.json)](https://snyk.io/test/github/killtheliterate/observable-socket?targetFile=package.json)
 [![Standard - JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
 [![npm version](https://img.shields.io/npm/v/observable-socket.svg)](https://www.npmjs.com/package/observable-socket)
