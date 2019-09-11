@@ -29,7 +29,7 @@ export function create (_ws: WebSocketLike & EventTargetLike<WebSocketLike>) {
 
   // Compose socket event streams, so that external subscribers have a single
   // interface that forwards socket events to onNext, onError and onCompleted.
-  const webSocketObservable: Observable<any> = Observable.create(function (observer: Observer<any>) {
+  const webSocketObservable: Observable<any> = new Observable(function (observer: Observer<any>) {
     const messageSubscription = fromEvent(_ws, 'message')
       .subscribe(function handleNext (e) {
         debug('observable-socket:handleNext')('message')
