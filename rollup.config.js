@@ -2,7 +2,7 @@ import babel from 'rollup-plugin-babel'
 import commonjs from 'rollup-plugin-commonjs'
 import pkg from './package.json'
 import resolve from 'rollup-plugin-node-resolve'
-import uglify from 'rollup-plugin-uglify'
+import { uglify } from 'rollup-plugin-uglify'
 
 const name = 'ObservableSocket'
 
@@ -13,7 +13,6 @@ const uglifyConfig = {
     pure_getters: true,
     unsafe: true,
     unsafe_comps: true,
-    warnings: false
   }
 }
 
@@ -71,7 +70,10 @@ export default [
 
   {
     ...baseConfig,
-    plugins: [...baseConfig.plugins, uglify(uglifyConfig)],
+    plugins: [
+      ...baseConfig.plugins,
+      uglify(uglifyConfig)
+    ],
     output: {
       file: pkg.browser,
       format: 'iife',
