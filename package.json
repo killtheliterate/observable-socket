@@ -65,7 +65,7 @@
     "rollup-watch": "^4.3.1",
     "ts-jest": "^24.3.0",
     "tslint": "^5.20.1",
-    "tslint-config-standard": "^8.0.1",
+    "tslint-config-standard": "^9.0.0",
     "typescript": "^3.9.3",
     "typescript-tslint-plugin": "^0.5.4",
     "ws": "7.3.0"
