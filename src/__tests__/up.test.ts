@@ -25,7 +25,7 @@ describe('up', function () {
       done()
     }
 
-    const socket = create(ws)
+    const socket = create(ws as unknown as WebSocket)
 
     send(socket, 'hello human...')
   })
@@ -38,7 +38,7 @@ describe('up', function () {
       done()
     }
 
-    const socket = create(ws)
+    const socket = create(ws as unknown as WebSocket)
 
     send(socket, 'hello human...')
 
@@ -54,7 +54,7 @@ describe('up', function () {
       throw new Error('blech')
     }
 
-    const socket = create(ws)
+    const socket = create(ws as unknown as WebSocket)
 
     send(socket, 'hello human...').catch((err: { message: string }) => {
       expect(err.message).toEqual('blech')

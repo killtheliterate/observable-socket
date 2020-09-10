@@ -22,11 +22,11 @@ class WS extends EventEmitter {
 describe('down', function () {
   it('observes messages', function (done) {
     const ws = new WS()
-    const socket = create(ws)
+    const socket = create(ws as unknown as WebSocket)
 
     socket.down.pipe(take(1))
       .subscribe(
-        (el: number) => expect(el).toEqual(1),
+        (el) => expect(el).toEqual(1),
         done,
         noop
       )
@@ -46,7 +46,7 @@ describe('down', function () {
 
   it('completes', function (done) {
     const ws = new WS()
-    const socket = create(ws)
+    const socket = create(ws as unknown as WebSocket)
 
     socket.down
       .subscribe(
@@ -60,7 +60,7 @@ describe('down', function () {
 
   it('wraps errors', function (done) {
     const ws = new WS()
-    const socket = create(ws)
+    const socket = create(ws as unknown as WebSocket)
 
     socket.down
       .subscribe(
