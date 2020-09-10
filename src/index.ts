@@ -7,7 +7,8 @@ import { take } from 'rxjs/operators'
 
 export interface WebSocketLike {
   readyState: number
-  send: (...args: unknown[]) => void
+  send (data: any, cb?: (err?: Error) => void): void
+  send (data: any, options: { mask?: boolean; binary?: boolean; compress?: boolean; fin?: boolean }, cb?: (err?: Error) => void): void
 }
 
 export function create (_ws: WebSocketLike & EventTargetLike<WebSocketLike>) {

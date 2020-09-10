@@ -5,10 +5,11 @@
   "browser": "dist/browser.min.js",
   "main": "dist/cjs.js",
   "module": "dist/esm.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "build": "npm run build:types && npm run build:module",
     "build:module": "rollup -c",
-    "build:types": "tsc --emitDeclarationOnly",
+    "build:types": "tsc --project tsconfig.build.json --emitDeclarationOnly",
     "prepublishOnly": "npm run build",
     "test": "npm run util:lint && npm run util:type-check && jest",
     "util:lint": "tslint -p tsconfig.json -c tslint.json",
