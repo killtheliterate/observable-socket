@@ -2,6 +2,7 @@
 [![Known Vulnerabilities](https://snyk.io/test/github/killtheliterate/observable-socket/badge.svg?targetFile=package.json)](https://snyk.io/test/github/killtheliterate/observable-socket?targetFile=package.json)
 [![Standard - JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
 [![npm version](https://img.shields.io/npm/v/observable-socket.svg)](https://www.npmjs.com/package/observable-socket)
+[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 
 # observable-socket
 
@@ -103,7 +104,6 @@ a notion of "healing" a connection. Instead, when a socket drops, the
 creating a new socket, and re-wrapping `observable-socket` around it. An
 example of how this can be done:
 
-* [requirebin](http://requirebin.com/?gist=2ec1f61d5404733d6918483730170447)
 * [gist](https://gist.github.com/killtheliterate/2ec1f61d5404733d6918483730170447#file-index-js)
 
 # Bundles and packages and boxes and goodies...
