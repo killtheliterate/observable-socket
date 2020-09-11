@@ -11,7 +11,7 @@ import { create } from '../index'
 
 // ---------------------------------------------------------------------------
 
-const sum = (acc: any, el: any) => acc + el
+const sum = (acc: number, msg: MessageEvent) => acc + parseInt(msg.data, 10)
 const noop = () => null
 
 class WS extends EventEmitter {
@@ -26,7 +26,10 @@ describe('down', function () {
 
     socket.down.pipe(take(1))
       .subscribe(
-        (el) => expect(el).toEqual(1),
+        (msg) => {
+          const el = parseInt(msg.data, 10)
+          expect(el).toEqual(1)
+        },
         done,
         noop
       )
@@ -38,9 +41,9 @@ describe('down', function () {
         () => done()
       )
 
-    ws.emit('message', 1)
-    ws.emit('message', 2)
-    ws.emit('message', 3)
+    ws.emit('message', { data: '1' })
+    ws.emit('message', { data: '2' })
+    ws.emit('message', { data: '3' })
     ws.emit('close')
   })
 
