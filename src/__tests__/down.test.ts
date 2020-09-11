@@ -11,7 +11,7 @@ import { create } from '../index'
 
 // ---------------------------------------------------------------------------
 
-const sum = (acc: any, el: any) => acc + el
+const sum = (acc: number, msg: MessageEvent) => acc + parseInt(msg.data, 10)
 const noop = () => null
 
 class WS extends EventEmitter {
@@ -22,11 +22,14 @@ class WS extends EventEmitter {
 describe('down', function () {
   it('observes messages', function (done) {
     const ws = new WS()
-    const socket = create(ws)
+    const socket = create(ws as unknown as WebSocket)
 
     socket.down.pipe(take(1))
       .subscribe(
-        (el: number) => expect(el).toEqual(1),
+        (msg) => {
+          const el = parseInt(msg.data, 10)
+          expect(el).toEqual(1)
+        },
         done,
         noop
       )
@@ -38,15 +41,15 @@ describe('down', function () {
         () => done()
       )
 
-    ws.emit('message', 1)
-    ws.emit('message', 2)
-    ws.emit('message', 3)
+    ws.emit('message', { data: '1' })
+    ws.emit('message', { data: '2' })
+    ws.emit('message', { data: '3' })
     ws.emit('close')
   })
 
   it('completes', function (done) {
     const ws = new WS()
-    const socket = create(ws)
+    const socket = create(ws as unknown as WebSocket)
 
     socket.down
       .subscribe(
@@ -60,7 +63,7 @@ describe('down', function () {
 
   it('wraps errors', function (done) {
     const ws = new WS()
-    const socket = create(ws)
+    const socket = create(ws as unknown as WebSocket)
 
     socket.down
       .subscribe(

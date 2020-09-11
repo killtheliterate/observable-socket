@@ -6,8 +6,8 @@ import { create } from '../index'
 
 // ---------------------------------------------------------------------------
 
-const send = (socket: any, msg: string) => socket.up(msg)
-const noop = (..._args: any[]) => undefined
+const send = (socket: ReturnType<typeof create>, msg: string) => socket.up(msg)
+const noop = (..._args: unknown[]) => null
 
 class WS extends EventEmitter {
   readyState = 1
@@ -25,9 +25,9 @@ describe('up', function () {
       done()
     }
 
-    const socket = create(ws)
+    const socket = create(ws as unknown as WebSocket)
 
-    send(socket, 'hello human...')
+    return send(socket, 'hello human...')
   })
 
   it('waits to send messages until the socket is ready', function (done) {
@@ -38,11 +38,11 @@ describe('up', function () {
       done()
     }
 
-    const socket = create(ws)
+    const socket = create(ws as unknown as WebSocket)
 
-    send(socket, 'hello human...')
+    setTimeout(() => ws.emit('open'), 3000)
 
-    setTimeout(() => ws.emit('open'), 50)
+    return send(socket, 'hello human...')
   })
 
   it('handles errors', function (done) {
@@ -54,7 +54,7 @@ describe('up', function () {
       throw new Error('blech')
     }
 
-    const socket = create(ws)
+    const socket = create(ws as unknown as WebSocket)
 
     send(socket, 'hello human...').catch((err: { message: string }) => {
       expect(err.message).toEqual('blech')
