@@ -71,6 +71,6 @@
     "tslint-config-standard": "^9.0.0",
     "typescript": "^3.9.3",
     "typescript-tslint-plugin": "^1.0.1",
-    "ws": "8.2.1"
+    "ws": "8.2.3"
   }
 }
