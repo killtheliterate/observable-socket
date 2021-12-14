@@ -1,3 +1,11 @@
+## [7.0.2](https://github.com/killtheliterate/observable-socket/compare/v7.0.1...v7.0.2) (2021-12-14)
+
+
+### chore
+
+* **deps-dev:** bump [@babel](https://github.com/babel)/plugin-proposal-class-properties ([f609a2c](https://github.com/killtheliterate/observable-socket/commit/f609a2cff4c5176d36f323567010decc0d683425))
+* **deps-dev:** bump [@babel](https://github.com/babel)/preset-typescript from 7.16.0 to 7.16.5 ([59bf98b](https://github.com/killtheliterate/observable-socket/commit/59bf98b5e63af5354308c0e5bdfd76eb5bd44521))
+
 ## [7.0.1](https://github.com/killtheliterate/observable-socket/compare/v7.0.0...v7.0.1) (2021-12-13)
 
 
