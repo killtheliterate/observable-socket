@@ -1,6 +1,6 @@
 {
   "name": "observable-socket",
-  "version": "7.0.2",
+  "version": "7.0.3",
   "description": "Wraps a websocket in an Observable.",
   "browser": "dist/browser.min.js",
   "main": "dist/cjs.js",

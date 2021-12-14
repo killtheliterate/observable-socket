@@ -1,3 +1,16 @@
+## [7.0.3](https://github.com/killtheliterate/observable-socket/compare/v7.0.2...v7.0.3) (2021-12-14)
+
+
+### chore
+
+* **deps-dev:** bump typescript from 4.5.3 to 4.5.4 ([c9f322b](https://github.com/killtheliterate/observable-socket/commit/c9f322b5c4423500be045d573dbca5aa68d74408))
+
+
+### ci
+
+* **release:** GH_TOKEN ([4597ae9](https://github.com/killtheliterate/observable-socket/commit/4597ae965253470ff9921edf26e2ae6b0b961ab5))
+* **release:** GH_TOKEN ([e7a0556](https://github.com/killtheliterate/observable-socket/commit/e7a0556bdac49a4ecf15305673deb3be68c46897))
+
 ## [7.0.2](https://github.com/killtheliterate/observable-socket/compare/v7.0.1...v7.0.2) (2021-12-14)
 
 
