@@ -1,3 +1,21 @@
+## [7.0.4](https://github.com/killtheliterate/observable-socket/compare/v7.0.3...v7.0.4) (2022-01-03)
+
+
+### chore
+
+* **deps-dev:** bump [@babel](https://github.com/babel)/cli from 7.16.0 to 7.16.7 ([0922f02](https://github.com/killtheliterate/observable-socket/commit/0922f028cff7df14b78ef13094b8e21738c667e5))
+* **deps-dev:** bump [@babel](https://github.com/babel)/core from 7.16.0 to 7.16.5 ([641f209](https://github.com/killtheliterate/observable-socket/commit/641f2091288f74a36d2d35bf5fbc354b49eab307))
+* **deps-dev:** bump [@babel](https://github.com/babel)/core from 7.16.5 to 7.16.7 ([03682fd](https://github.com/killtheliterate/observable-socket/commit/03682fd63a1ed3aa420345ea5a2e3b94811b573c))
+* **deps-dev:** bump [@babel](https://github.com/babel)/plugin-proposal-class-properties ([c142204](https://github.com/killtheliterate/observable-socket/commit/c142204b788d193beaea74b5c69461e500d9d5a7))
+* **deps-dev:** bump [@babel](https://github.com/babel)/plugin-proposal-object-rest-spread ([6346f1b](https://github.com/killtheliterate/observable-socket/commit/6346f1be4447b6036edfcb1994d3459a6cd349a1))
+* **deps-dev:** bump [@babel](https://github.com/babel)/plugin-proposal-object-rest-spread ([81f070e](https://github.com/killtheliterate/observable-socket/commit/81f070e20d3a1c3ef917d8ef9c4144c6a2a6d4b3))
+* **deps-dev:** bump [@babel](https://github.com/babel)/preset-env from 7.16.4 to 7.16.5 ([c464df8](https://github.com/killtheliterate/observable-socket/commit/c464df868618a3a460c3b8c3fc3c2b5fef621596))
+* **deps-dev:** bump [@babel](https://github.com/babel)/preset-env from 7.16.5 to 7.16.7 ([eef4300](https://github.com/killtheliterate/observable-socket/commit/eef4300e100c43efaa950919cc0d8c98fa113e4c))
+* **deps-dev:** bump [@babel](https://github.com/babel)/preset-typescript from 7.16.5 to 7.16.7 ([1649270](https://github.com/killtheliterate/observable-socket/commit/164927069689f3402e8533497b9bdefb0750240f))
+* **deps-dev:** bump rollup from 2.61.1 to 2.62.0 ([fbf315a](https://github.com/killtheliterate/observable-socket/commit/fbf315a242ed7c19ca9a4bfc19af0647bf53b5bb))
+* **deps-dev:** bump ws from 8.3.0 to 8.4.0 ([5805651](https://github.com/killtheliterate/observable-socket/commit/5805651abf82a9244f4f0f8411d3af4ac1efd1fb))
+* **deps:** bump actions/setup-node from 2.5.0 to 2.5.1 ([62e3269](https://github.com/killtheliterate/observable-socket/commit/62e3269c740f23b3816a6c0af3d1f4d2f9fd814b))
+
 ## [7.0.3](https://github.com/killtheliterate/observable-socket/compare/v7.0.2...v7.0.3) (2021-12-14)
 
 
