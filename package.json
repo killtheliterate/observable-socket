@@ -57,7 +57,7 @@
     "@types/debug": "4.1.7",
     "@types/jest": "^26.0.24",
     "cross-env": "^7.0.2",
-    "jest": "^24.9.0",
+    "jest": "^27.4.5",
     "rollup": "2.62.0",
     "rollup-plugin-babel": "^4.3.3",
     "rollup-plugin-commonjs": "^10.1.0",
