@@ -2,19 +2,11 @@ import babel from 'rollup-plugin-babel'
 import commonjs from 'rollup-plugin-commonjs'
 import pkg from './package.json'
 import resolve from 'rollup-plugin-node-resolve'
-import { uglify } from 'rollup-plugin-uglify'
+import { terser } from 'rollup-plugin-terser'
 
 const name = 'ObservableSocket'
 
 const extensions = [ '.js', '.jsx', '.ts', '.tsx' ]
-
-const uglifyConfig = {
-  compress: {
-    pure_getters: true,
-    unsafe: true,
-    unsafe_comps: true,
-  }
-}
 
 const baseConfig = {
   input: './src/index.ts',
@@ -72,7 +64,7 @@ export default [
     ...baseConfig,
     plugins: [
       ...baseConfig.plugins,
-      uglify(uglifyConfig)
+      terser(),
     ],
     output: {
       file: pkg.browser,
