@@ -1,3 +1,49 @@
+## [7.0.6](https://github.com/killtheliterate/observable-socket/compare/v7.0.5...v7.0.6) (2022-11-30)
+
+
+### chore
+
+* **deps-dev:** bump [@babel](https://github.com/babel)/cli from 7.17.6 to 7.17.10 ([765f698](https://github.com/killtheliterate/observable-socket/commit/765f69883308c2852c461d15acd1e67c305a2f39))
+* **deps-dev:** bump [@babel](https://github.com/babel)/cli from 7.18.10 to 7.19.3 ([1943226](https://github.com/killtheliterate/observable-socket/commit/19432262b5a7d4db9d005fa5f12c0433f24c7261))
+* **deps-dev:** bump [@babel](https://github.com/babel)/core from 7.17.10 to 7.18.2 ([354f849](https://github.com/killtheliterate/observable-socket/commit/354f8495f952112357452f56558e5ec97f83b8d7))
+* **deps-dev:** bump [@babel](https://github.com/babel)/core from 7.17.8 to 7.17.10 ([cc1b15c](https://github.com/killtheliterate/observable-socket/commit/cc1b15c9e52155b53983761e5b6014e41822da55))
+* **deps-dev:** bump [@babel](https://github.com/babel)/core from 7.18.10 to 7.19.3 ([5b52af8](https://github.com/killtheliterate/observable-socket/commit/5b52af8f1bb5b61c3c428c42a679577dd7904887))
+* **deps-dev:** bump [@babel](https://github.com/babel)/core from 7.19.3 to 7.19.6 ([fef3fd9](https://github.com/killtheliterate/observable-socket/commit/fef3fd99ffdf0de63298704239555193ff85f4df))
+* **deps-dev:** bump [@babel](https://github.com/babel)/plugin-proposal-class-properties ([5559ba8](https://github.com/killtheliterate/observable-socket/commit/5559ba85b6f740431b771ed9dc4b393f4bf19903))
+* **deps-dev:** bump [@babel](https://github.com/babel)/preset-env from 7.16.11 to 7.17.10 ([4f6d9f9](https://github.com/killtheliterate/observable-socket/commit/4f6d9f9adf22a14cf97bea5f4bf49b6bb6e1328f))
+* **deps-dev:** bump [@babel](https://github.com/babel)/preset-env from 7.17.10 to 7.18.2 ([92e1e06](https://github.com/killtheliterate/observable-socket/commit/92e1e06b8b1e7a04a5ce869fc885a233262663f7))
+* **deps-dev:** bump [@babel](https://github.com/babel)/preset-env from 7.18.10 to 7.19.3 ([b6ee4eb](https://github.com/killtheliterate/observable-socket/commit/b6ee4eb99fd71a9e167fba0e450a1c4751a21d2c))
+* **deps-dev:** bump [@babel](https://github.com/babel)/preset-env from 7.19.3 to 7.19.4 ([e0a9429](https://github.com/killtheliterate/observable-socket/commit/e0a94292ba748035c8fe3afe6e6eaa8c0e6cf45c))
+* **deps-dev:** bump [@babel](https://github.com/babel)/preset-typescript from 7.16.7 to 7.17.12 ([6a44ada](https://github.com/killtheliterate/observable-socket/commit/6a44adab7ffe0a4991fbeec33237d3898e52336e))
+* **deps-dev:** bump rollup from 2.70.1 to 2.72.1 ([cfc782c](https://github.com/killtheliterate/observable-socket/commit/cfc782c04a1bb141f51901e6bda59a61e7c80a87))
+* **deps-dev:** bump rollup from 2.72.1 to 2.75.5 ([273dbfe](https://github.com/killtheliterate/observable-socket/commit/273dbfe77bd34d1c94206e4116d002961ccc7728))
+* **deps-dev:** bump rollup from 2.75.5 to 2.78.0 ([4589320](https://github.com/killtheliterate/observable-socket/commit/4589320fa7eab0e309da7784be9e12e63ab85d4e))
+* **deps-dev:** bump rollup from 2.78.0 to 2.79.1 ([710b1e2](https://github.com/killtheliterate/observable-socket/commit/710b1e2366417fac6f9f3b9fbeddfdf7ae21ecdf))
+* **deps-dev:** bump semantic-release from 19.0.3 to 19.0.5 ([d33c2c6](https://github.com/killtheliterate/observable-socket/commit/d33c2c61a6d648d8b02f1b37e94c00e635b5113a))
+* **deps-dev:** bump semantic-release-npm-github-publish ([ef43a39](https://github.com/killtheliterate/observable-socket/commit/ef43a39d2c6c006351e581d8d83868f79a4e6aea))
+* **deps-dev:** bump typescript from 4.6.3 to 4.6.4 ([83cba0d](https://github.com/killtheliterate/observable-socket/commit/83cba0d2a277492da31698efa7295e4165ab00ca))
+* **deps-dev:** bump typescript from 4.6.4 to 4.7.2 ([4057921](https://github.com/killtheliterate/observable-socket/commit/40579213f23481a24b38cf728db527647c6f0f17))
+* **deps-dev:** bump typescript from 4.7.4 to 4.8.4 ([5b653af](https://github.com/killtheliterate/observable-socket/commit/5b653af31fc382b00e93a233859575b428fad87e))
+* **deps-dev:** bump typescript-tslint-plugin from 1.0.1 to 1.0.2 ([9497348](https://github.com/killtheliterate/observable-socket/commit/949734882410389d71ddd2109f3698fada214e68))
+* **deps-dev:** bump ws from 8.5.0 to 8.6.0 ([5766b0b](https://github.com/killtheliterate/observable-socket/commit/5766b0b68dd7b4f1d1e42176e4e9361dd93e7add))
+* **deps-dev:** bump ws from 8.6.0 to 8.7.0 ([70b72a1](https://github.com/killtheliterate/observable-socket/commit/70b72a1c11b0df8afc88f36d47292e56cfa824ea))
+* **deps-dev:** bump ws from 8.7.0 to 8.8.1 ([403fb44](https://github.com/killtheliterate/observable-socket/commit/403fb448808016087de2ed5f398ef7244877cfd2))
+* **deps-dev:** bump ws from 8.8.1 to 8.9.0 ([9d409de](https://github.com/killtheliterate/observable-socket/commit/9d409deed684c4b9fc6841dea69be4ba5fdda147))
+* **deps-dev:** bump ws from 8.9.0 to 8.11.0 ([7e8e520](https://github.com/killtheliterate/observable-socket/commit/7e8e520fb863c9e158b58cc5afa4490fe927c338))
+* **deps:** bump debug from 4.3.3 to 4.3.4 ([7473cc5](https://github.com/killtheliterate/observable-socket/commit/7473cc5545080453098103e8dadc2c2871608594))
+* **deps:** bump github/codeql-action from 1 to 2 ([e726b10](https://github.com/killtheliterate/observable-socket/commit/e726b102bec4f123dd106e54978a2f33828bb23e))
+* **deps:** bump snyk from 1.988.0 to 1.1024.0 ([f6437c3](https://github.com/killtheliterate/observable-socket/commit/f6437c3a6c3c06bc6c45157df9f70989633d56c8))
+
+
+### fix
+
+* release branch ([39de7a1](https://github.com/killtheliterate/observable-socket/commit/39de7a10df6eccd4d391ebff1d6e6236b0ae5a76))
+* release branch ([7cd996e](https://github.com/killtheliterate/observable-socket/commit/7cd996e80ce10ba439480b53f3c42d311dfd1ac6))
+* **rollup:** replace uglify with terser ([ded89b0](https://github.com/killtheliterate/observable-socket/commit/ded89b093e66ced01f1109fe1f3756edab798fb0))
+* **rollup:** replace uglify with terser ([44185af](https://github.com/killtheliterate/observable-socket/commit/44185af84763a9984c4d54b912ed023a7ccdfa49))
+* trigger release ([b871ddb](https://github.com/killtheliterate/observable-socket/commit/b871ddb18be661ff09a1167eeb46d822c89a235c))
+* trigger release ([6c7bd0c](https://github.com/killtheliterate/observable-socket/commit/6c7bd0c01fa736f5b112b72af86bd5a2a34c36af))
+
 ## [7.0.5](https://github.com/killtheliterate/observable-socket/compare/v7.0.4...v7.0.5) (2022-04-04)
 
 
