@@ -1,3 +1,11 @@
+## [7.0.8](https://github.com/killtheliterate/observable-socket/compare/v7.0.7...v7.0.8) (2022-12-01)
+
+
+### chore
+
+* **deps:** bump typescript ([f37e64c](https://github.com/killtheliterate/observable-socket/commit/f37e64c2eb005220e2558c5beaac85c067710ea3))
+* **deps:** bump typescript ([8c622ae](https://github.com/killtheliterate/observable-socket/commit/8c622aecfd7907104cfd967dfde7ba77566257c9))
+
 ## [7.0.7](https://github.com/killtheliterate/observable-socket/compare/v7.0.6...v7.0.7) (2022-12-01)
 
 
