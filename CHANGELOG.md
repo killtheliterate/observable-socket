@@ -1,3 +1,12 @@
+## [7.0.7](https://github.com/killtheliterate/observable-socket/compare/v7.0.6...v7.0.7) (2022-12-01)
+
+
+### chore
+
+* **deps-dev:** bump [@babel](https://github.com/babel)/core from 7.19.6 to 7.20.5 ([2094616](https://github.com/killtheliterate/observable-socket/commit/2094616cc53fcb7e4d99839118975e577ddae985))
+* **deps-dev:** bump [@babel](https://github.com/babel)/core from 7.19.6 to 7.20.5 ([d0777f3](https://github.com/killtheliterate/observable-socket/commit/d0777f3ba23cc79d6892ce3c0b85a7e2d351ad5d))
+* **deps-dev:** bump [@babel](https://github.com/babel)/preset-env from 7.19.4 to 7.20.2 ([e050bb0](https://github.com/killtheliterate/observable-socket/commit/e050bb06b9591c7fa185e64616eb908e0bdca944))
+
 ## [7.0.6](https://github.com/killtheliterate/observable-socket/compare/v7.0.5...v7.0.6) (2022-11-30)
 
 
