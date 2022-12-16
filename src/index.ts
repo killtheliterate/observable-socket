@@ -68,8 +68,10 @@ export function create (_ws: _WebSocket) {
   })
 
   return {
-    up: (message: MessageType) => {
-      return readyToSend.then(send => send(message))
+    up: async (message: MessageType) => {
+      const send = await readyToSend
+
+      return send(message)
     },
     down: webSocketObservable
   }
