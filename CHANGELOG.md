@@ -1,3 +1,16 @@
+## [7.0.9](https://github.com/killtheliterate/observable-socket/compare/v7.0.8...v7.0.9) (2022-12-16)
+
+
+### chore
+
+* **deps:** bump decode-uri-component from 0.2.0 to 0.2.2 ([eb4a0f1](https://github.com/killtheliterate/observable-socket/commit/eb4a0f1ea05056e80c0cdcab1b96e8a57e28a2f1))
+
+
+### fix
+
+* convert then to async/await ([3e89f32](https://github.com/killtheliterate/observable-socket/commit/3e89f322d464093e83cb7c1cceeaa5045aba2037))
+* convert then to async/await ([a2e1543](https://github.com/killtheliterate/observable-socket/commit/a2e15431dbeef614d4fc06b58807e0ee802f4bf4))
+
 ## [7.0.8](https://github.com/killtheliterate/observable-socket/compare/v7.0.7...v7.0.8) (2022-12-01)
 
 
