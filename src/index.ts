@@ -12,7 +12,6 @@ import {
 type MessageType =
   | ArrayBufferLike
   | ArrayBufferView
-  | Blob
   | string
 
 type _WebSocket =
