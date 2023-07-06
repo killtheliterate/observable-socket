@@ -1,3 +1,41 @@
+# [8.0.0](https://github.com/killtheliterate/observable-socket/compare/v7.0.9...v8.0.0) (2023-07-06)
+
+
+### chore
+
+* **deps-dev:** bump [@babel](https://github.com/babel)/cli from 7.19.3 to 7.20.7 ([e937ecc](https://github.com/killtheliterate/observable-socket/commit/e937ecc98925e72df8d805edf3978bf41198fa77))
+* **deps-dev:** bump [@babel](https://github.com/babel)/cli from 7.20.7 to 7.21.0 ([ecb116f](https://github.com/killtheliterate/observable-socket/commit/ecb116fd7a3f500e8af49d034173ef0976f6934f))
+* **deps-dev:** bump [@babel](https://github.com/babel)/cli from 7.21.0 to 7.22.6 ([0a50bbb](https://github.com/killtheliterate/observable-socket/commit/0a50bbba6c0fd0589b6cbb8279556da7064d66b2))
+* **deps-dev:** bump [@babel](https://github.com/babel)/core from 7.20.12 to 7.21.0 ([e5ad3fe](https://github.com/killtheliterate/observable-socket/commit/e5ad3fe07fabd6f89ead64e5c091dbe6f389556a))
+* **deps-dev:** bump [@babel](https://github.com/babel)/core from 7.20.5 to 7.20.12 ([0d781a0](https://github.com/killtheliterate/observable-socket/commit/0d781a0617b17632ff21c524b1d4849fe8677366))
+* **deps-dev:** bump [@babel](https://github.com/babel)/core from 7.21.0 to 7.21.4 ([e5b39ff](https://github.com/killtheliterate/observable-socket/commit/e5b39ffd02ebae3b5547c5bebe24e79a912e069f))
+* **deps-dev:** bump [@babel](https://github.com/babel)/core from 7.21.4 to 7.22.8 ([f64d196](https://github.com/killtheliterate/observable-socket/commit/f64d19650c7343a9a5aba93fa91604f6a4ea2d9e))
+* **deps-dev:** bump [@babel](https://github.com/babel)/plugin-proposal-object-rest-spread ([b0d9cee](https://github.com/killtheliterate/observable-socket/commit/b0d9cee0a68799034c65c051deced6f7eb6aafd7))
+* **deps-dev:** bump [@babel](https://github.com/babel)/preset-env from 7.20.2 to 7.21.4 ([7394524](https://github.com/killtheliterate/observable-socket/commit/739452478dc109cf6a4c78ac7d903e00f63dddbd))
+* **deps-dev:** bump [@babel](https://github.com/babel)/preset-env from 7.21.4 to 7.22.7 ([3dc3e7b](https://github.com/killtheliterate/observable-socket/commit/3dc3e7ba65df607217dea02feea20d92570399b8))
+* **deps-dev:** bump [@babel](https://github.com/babel)/preset-typescript from 7.18.6 to 7.21.0 ([a79ac5c](https://github.com/killtheliterate/observable-socket/commit/a79ac5c993d4cd3812752d4c949155b078a2cbe7))
+* **deps-dev:** bump [@babel](https://github.com/babel)/preset-typescript from 7.21.0 to 7.21.4 ([dc476ff](https://github.com/killtheliterate/observable-socket/commit/dc476ff01dc519c13ce4f5b9b8a87d4962df020e))
+* **deps-dev:** bump [@babel](https://github.com/babel)/preset-typescript from 7.21.4 to 7.22.5 ([e90c092](https://github.com/killtheliterate/observable-socket/commit/e90c09259ac91091af61dc850576cc3643ad34be))
+* **deps-dev:** bump semantic-release from 19.0.5 to 20.1.3 ([ddc8a9c](https://github.com/killtheliterate/observable-socket/commit/ddc8a9c263667d6a8131c29c92638d1360230d54))
+* **deps-dev:** bump semantic-release from 20.1.3 to 21.0.1 ([edff864](https://github.com/killtheliterate/observable-socket/commit/edff86424fd24b0e65194140467b372aa3e2bced))
+* **deps-dev:** bump semantic-release from 21.0.1 to 21.0.7 ([7a888c2](https://github.com/killtheliterate/observable-socket/commit/7a888c25d131cbfe6cae50674d040e60cf950925))
+* **deps-dev:** bump typescript from 4.9.4 to 5.0.2 ([c89455b](https://github.com/killtheliterate/observable-socket/commit/c89455b18ada412ff8ce29b9a21b32c31ff06efc))
+* **deps-dev:** bump typescript from 5.0.2 to 5.0.3 ([6d5d0e8](https://github.com/killtheliterate/observable-socket/commit/6d5d0e8eadd816ac3ad7c47f6e08c82a9e52f835))
+* **deps-dev:** bump typescript from 5.0.3 to 5.1.6 ([e6863f5](https://github.com/killtheliterate/observable-socket/commit/e6863f5693cb11650d6ab4cf44f36bd4b2f631cb))
+* **deps:** bump npm from 7.24.2 to 9.6.3 ([299a9ba](https://github.com/killtheliterate/observable-socket/commit/299a9baccd0e8940eb1cddc7993d7b23e7e1f6cc))
+
+
+### fix
+
+* **deps:** regenerate lockfile ([3198cdd](https://github.com/killtheliterate/observable-socket/commit/3198cdd30f01ba02f073ae240c7b6acef4dee465))
+* **deps:** regenerate lockfile ([4cbd08d](https://github.com/killtheliterate/observable-socket/commit/4cbd08d901b6db508ec78d955110b8781276a059))
+* **ws:** fix types ([1be1b30](https://github.com/killtheliterate/observable-socket/commit/1be1b3084d385d2426634fd237842986a172eee8))
+
+
+### Breaking changes
+
+* **ws:** remove Blob from MessageType
+
 ## [7.0.9](https://github.com/killtheliterate/observable-socket/compare/v7.0.8...v7.0.9) (2022-12-16)
 
 
