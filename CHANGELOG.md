@@ -1,3 +1,28 @@
+## [8.0.1](https://github.com/killtheliterate/observable-socket/compare/v8.0.0...v8.0.1) (2023-09-07)
+
+
+### chore
+
+* **deps-dev:** bump [@babel](https://github.com/babel)/cli from 7.22.6 to 7.22.10 ([a152ef4](https://github.com/killtheliterate/observable-socket/commit/a152ef4560145c1e5072d7ababfa2edc15b7e9ce))
+* **deps-dev:** bump [@babel](https://github.com/babel)/core from 7.22.10 to 7.22.11 ([0914f4b](https://github.com/killtheliterate/observable-socket/commit/0914f4bc822c8d93974903deba4389c08991bb69))
+* **deps-dev:** bump [@babel](https://github.com/babel)/core from 7.22.8 to 7.22.10 ([869cbc5](https://github.com/killtheliterate/observable-socket/commit/869cbc555bca46551317346bcfb766b161d5f099))
+* **deps-dev:** bump [@babel](https://github.com/babel)/preset-env from 7.22.7 to 7.22.9 ([6d01df8](https://github.com/killtheliterate/observable-socket/commit/6d01df843bcaa55978de653a2d8955b532147197))
+* **deps-dev:** bump [@babel](https://github.com/babel)/preset-env from 7.22.9 to 7.22.14 ([24b24a4](https://github.com/killtheliterate/observable-socket/commit/24b24a45c46c12cd8bad0a83fde73083b9eb6549))
+* **deps-dev:** bump [@babel](https://github.com/babel)/preset-typescript from 7.22.5 to 7.22.11 ([e0a432e](https://github.com/killtheliterate/observable-socket/commit/e0a432e1a366daf04c3a5f17b9ca006dac2ed03f))
+* **deps-dev:** bump [@types](https://github.com/types)/debug from 4.1.7 to 4.1.8 ([f2b1524](https://github.com/killtheliterate/observable-socket/commit/f2b1524c17d4130acb9373b6fda3a4041af527ab))
+* **deps-dev:** bump semantic-release from 21.0.7 to 21.1.1 ([d4f5d83](https://github.com/killtheliterate/observable-socket/commit/d4f5d8382a999ccf58e3d1d214c92ffe9113df9d))
+* **deps-dev:** bump typescript from 5.1.6 to 5.2.2 ([7c457ff](https://github.com/killtheliterate/observable-socket/commit/7c457fff14f5555d56294af6869507913473eff1))
+* **deps-dev:** bump word-wrap from 1.2.3 to 1.2.5 ([ea3569a](https://github.com/killtheliterate/observable-socket/commit/ea3569a4daf3e812a7070b28c649f6d26d176fcf))
+* **deps-dev:** bump ws from 8.11.0 to 8.13.0 ([3518851](https://github.com/killtheliterate/observable-socket/commit/35188518525a2ab894a2e6a773b2ef36d2e3b6db))
+* **deps:** bump actions/checkout from 3 to 4 ([b22f9ad](https://github.com/killtheliterate/observable-socket/commit/b22f9ad034ea50934a9ba008a77add4b931d6619))
+* **deps:** bump npm from 7.24.2 to 9.8.0 ([ed620a2](https://github.com/killtheliterate/observable-socket/commit/ed620a2e7e0dc28b6ac8fc6199985ee87ac8837f))
+
+
+### ci
+
+* **dependabot:** add patch group ([ec18da3](https://github.com/killtheliterate/observable-socket/commit/ec18da3b32f8f6eb27a9b41f18d21552cac57241))
+* **dependabot:** add patch group ([d02cb83](https://github.com/killtheliterate/observable-socket/commit/d02cb83f737416873da8827cbbb47871371f924b))
+
 # [8.0.0](https://github.com/killtheliterate/observable-socket/compare/v7.0.9...v8.0.0) (2023-07-06)
 
 
