@@ -54,7 +54,7 @@
     "@babel/plugin-proposal-object-rest-spread": "^7.5.5",
     "@babel/preset-env": "^7.14.8",
     "@babel/preset-typescript": "^7.10.1",
-    "@types/debug": "4.1.8",
+    "@types/debug": "4.1.9",
     "@types/jest": "^26.0.24",
     "cross-env": "^7.0.2",
     "jest": "^24.9.0",
@@ -72,6 +72,6 @@
     "tslint-config-standard": "^9.0.0",
     "typescript": "^5.0.2",
     "typescript-tslint-plugin": "^1.0.1",
-    "ws": "8.14.0"
+    "ws": "8.14.2"
   }
 }
