@@ -1,3 +1,19 @@
+## [8.0.2](https://github.com/killtheliterate/observable-socket/compare/v8.0.1...v8.0.2) (2023-10-20)
+
+
+### chore
+
+* **deps-dev:** bump [@babel](https://github.com/babel)/cli from 7.22.15 to 7.23.0 ([dffdb35](https://github.com/killtheliterate/observable-socket/commit/dffdb3557e440409093bc52e295a879de54404c7))
+* **deps-dev:** bump [@babel](https://github.com/babel)/core from 7.22.15 to 7.23.0 ([37823ae](https://github.com/killtheliterate/observable-socket/commit/37823aefdad1a5a93996f622d2f78e8ebc4e2d5f))
+* **deps-dev:** bump [@babel](https://github.com/babel)/preset-env from 7.22.20 to 7.23.2 ([ff2459c](https://github.com/killtheliterate/observable-socket/commit/ff2459c59d1439b7913899dee615530caaadf261))
+* **deps-dev:** bump [@babel](https://github.com/babel)/preset-typescript from 7.22.15 to 7.23.0 ([94ba337](https://github.com/killtheliterate/observable-socket/commit/94ba337ad6cfa4435a9f81b1c03ab0dcf18c3f49))
+* **deps-dev:** bump [@babel](https://github.com/babel)/traverse from 7.23.0 to 7.23.2 ([385aae2](https://github.com/killtheliterate/observable-socket/commit/385aae2d5904313bd9d4fb011cdb6f969be82810))
+* **deps-dev:** bump semantic-release from 21.1.1 to 22.0.5 ([9752707](https://github.com/killtheliterate/observable-socket/commit/97527071caa8361c7b2654b4c9716fa80f60e9f7))
+* **deps-dev:** bump the patches group with 4 updates ([1d121b1](https://github.com/killtheliterate/observable-socket/commit/1d121b1073956e506768fd8ddd0221927098358a))
+* **deps-dev:** bump ws from 8.13.0 to 8.14.0 ([58c6515](https://github.com/killtheliterate/observable-socket/commit/58c6515416f251971838d6420cd1eab2c78ffcbb))
+* **deps:** bump the patches group with 4 updates ([62830f8](https://github.com/killtheliterate/observable-socket/commit/62830f80e1de162ffd2cf0d1acf7f7a30a95171c))
+* **deps:** bump the patches group with 4 updates ([0f74c91](https://github.com/killtheliterate/observable-socket/commit/0f74c912283429e821fe3b1d1336a6d000b9db86))
+
 ## [8.0.1](https://github.com/killtheliterate/observable-socket/compare/v8.0.0...v8.0.1) (2023-09-07)
 
 
