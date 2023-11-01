@@ -1,3 +1,11 @@
+## [8.0.3](https://github.com/killtheliterate/observable-socket/compare/v8.0.2...v8.0.3) (2023-11-01)
+
+
+### chore
+
+* **deps-dev:** bump the patches group with 1 update ([4e2c93c](https://github.com/killtheliterate/observable-socket/commit/4e2c93cb8876ad24e8b695c8a1dec7c1d0986994))
+* **deps:** bump actions/setup-node from 3 to 4 ([2cdfda5](https://github.com/killtheliterate/observable-socket/commit/2cdfda50f9f7b74e038441c4fd24e2c7751f4734))
+
 ## [8.0.2](https://github.com/killtheliterate/observable-socket/compare/v8.0.1...v8.0.2) (2023-10-20)
 
 
