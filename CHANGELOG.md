@@ -1,3 +1,14 @@
+## [8.0.4](https://github.com/killtheliterate/observable-socket/compare/v8.0.3...v8.0.4) (2024-01-02)
+
+
+### chore
+
+* **deps-dev:** bump the patches group with 5 updates ([c0f3ac2](https://github.com/killtheliterate/observable-socket/commit/c0f3ac23d3ed35003460ce9fc505dd26b5c08928))
+* **deps-dev:** bump typescript from 5.2.2 to 5.3.2 ([84a0236](https://github.com/killtheliterate/observable-socket/commit/84a0236097ebce46974c0394f3dcd92503df16f5))
+* **deps-dev:** bump ws from 8.14.2 to 8.16.0 ([71bec39](https://github.com/killtheliterate/observable-socket/commit/71bec39383cf585415eb18d0dba8487f0e4db207))
+* **deps:** bump github/codeql-action from 2 to 3 ([a3619ae](https://github.com/killtheliterate/observable-socket/commit/a3619aeecb813c4a2975b511561cf37d1eb6498d))
+* **deps:** bump the patches group with 7 updates ([3b968a2](https://github.com/killtheliterate/observable-socket/commit/3b968a2cc8820e41f82a9ba8741a3be79e44fa59))
+
 ## [8.0.3](https://github.com/killtheliterate/observable-socket/compare/v8.0.2...v8.0.3) (2023-11-01)
 
 
