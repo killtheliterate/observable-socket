@@ -1,3 +1,11 @@
+## [8.0.5](https://github.com/killtheliterate/observable-socket/compare/v8.0.4...v8.0.5) (2024-04-03)
+
+
+### chore
+
+* **deps-dev:** bump semantic-release from 22.0.12 to 23.0.0 ([ad8d3f5](https://github.com/killtheliterate/observable-socket/commit/ad8d3f5fd36f96ae0650f0851403d397bd732994))
+* **deps-dev:** bump the patches group with 1 update ([680cf4d](https://github.com/killtheliterate/observable-socket/commit/680cf4de6433c1b79ea5ccdc9b0a24a9c30f5d9b))
+
 ## [8.0.4](https://github.com/killtheliterate/observable-socket/compare/v8.0.3...v8.0.4) (2024-01-02)
 
 
