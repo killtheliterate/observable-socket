@@ -1,3 +1,15 @@
+## [8.0.6](https://github.com/killtheliterate/observable-socket/compare/v8.0.5...v8.0.6) (2024-05-20)
+
+
+### chore
+
+* **deps-dev:** bump [@babel](https://github.com/babel)/cli from 7.23.4 to 7.24.5 ([bc2b890](https://github.com/killtheliterate/observable-socket/commit/bc2b89028cd07df2116461d2cbebbe6123b78841))
+* **deps-dev:** bump [@babel](https://github.com/babel)/core from 7.23.7 to 7.24.5 ([aaf47a4](https://github.com/killtheliterate/observable-socket/commit/aaf47a46ffddbdae1c86cfbf8c72e95bab65bbfa))
+* **deps-dev:** bump [@babel](https://github.com/babel)/preset-env from 7.23.7 to 7.24.5 ([b1303e0](https://github.com/killtheliterate/observable-socket/commit/b1303e09f8835ab689f3927795f4f81b00d7b594))
+* **deps-dev:** bump [@babel](https://github.com/babel)/preset-typescript from 7.23.3 to 7.24.1 ([d9de63d](https://github.com/killtheliterate/observable-socket/commit/d9de63dd65c2c49f6729af8bb4274d870a439d4f))
+* **deps-dev:** bump typescript from 5.3.3 to 5.4.5 ([f320ce4](https://github.com/killtheliterate/observable-socket/commit/f320ce464a3067655d003f4957a16b1a569c80de))
+* **deps-dev:** bump ws from 8.16.0 to 8.17.0 ([055b4ec](https://github.com/killtheliterate/observable-socket/commit/055b4ec9ecb54a65a0ec7e58613f907ac9e35ca9))
+
 ## [8.0.5](https://github.com/killtheliterate/observable-socket/compare/v8.0.4...v8.0.5) (2024-04-03)
 
 
