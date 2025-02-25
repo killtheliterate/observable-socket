@@ -44,7 +44,7 @@
   "license": "MIT",
   "dependencies": {
     "@types/ws": "^8.2.2",
-    "debug": "^4.3.2",
+    "debug": "^4.4.0",
     "rxjs": "^6.6.3"
   },
   "devDependencies": {
