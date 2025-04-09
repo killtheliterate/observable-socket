@@ -27,7 +27,7 @@ describe('up', function () {
 
     const socket = create(ws as unknown as WebSocket)
 
-    return send(socket, 'hello human...')
+    send(socket, 'hello human...').catch(done)
   })
 
   it('waits to send messages until the socket is ready', function (done) {
@@ -42,7 +42,7 @@ describe('up', function () {
 
     setTimeout(() => ws.emit('open'), 3000)
 
-    return send(socket, 'hello human...')
+    send(socket, 'hello human...').catch(done)
   })
 
   it('handles errors', function (done) {
