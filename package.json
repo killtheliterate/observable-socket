@@ -58,7 +58,7 @@
     "@types/jest": "^30.0.0",
     "cross-env": "^10.0.0",
     "jest": "^30.0.5",
-    "rollup": "2.79.2",
+    "rollup": "4.50.0",
     "rollup-plugin-babel": "^4.3.3",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-node-resolve": "^5.2.0",
